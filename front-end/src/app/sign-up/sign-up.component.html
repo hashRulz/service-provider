@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="card">
+        <div class="row">
+            <div class="text-center">
+                <h1 class="display-rebrand">Join as a client or freelancer</h1>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div data-cy="button-box" class="col align-self-center">
+                    <div class="col-12">
+                        <div class="up-radio"><label for="button-box-1" class="up-checkbox-label">
+                                <div class="material-symbols-outlined">
+                                    <img src="\assets\images\prof.jpg">
+                                </div>
+                                <input type="radio" checked style="accent-color: green;" id="button-box-1"
+                                    name="signup" (click)="contentChange('true')" value="true">
+                            </label></div>
+                        <div id="button-box-1" class="up-button-box-labels">
+                            <div class="up-button-box-label">
+                                <h5>
+                                    Buisness or Expert, looking for work
+                                 </h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div data-cy="button-box" class="col align-self-center">
+                    <div class="col-12">
+                        <div class="up-radio"><label for="button-box-2" class="up-checkbox-label">
+                                <span class="material-symbols-outlined">
+                                    <img src="\assets\images\personal-user.png">
+                                </span><input type="radio" checked style="accent-color: green;" id="button-box-2"
+                                    name="signup" (click)="contentChange('false')" value="true">
+                            </label></div>
+                        <div id="button-box-2" class="up-button-box-labels">
+                            <div class="up-button-box-label">
+                                <h5>
+                                    Client, hiring for a project
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="text-center" id="btn-submit">
+                <button type="button" class="btn btn-success">{{content}}</button>
+                <p class="mb-0" style="margin-top: 20px;">Already have an account? <a href="#" style="color: green;">
+                        Log In
+                    </a>
+                </p>
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>

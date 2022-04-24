@@ -1,0 +1,40 @@
+.container{
+    margin-top: 55px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.align-self-center{
+  
+    padding: 20px;
+}
+
+.col-12{
+    margin-left: 40px;
+    border-radius: 5px;
+    padding: 30px;
+    width: 80%;
+    color: green;
+    border: 1px solid green;
+}
+
+.btn-success{
+    width: 30%;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+h5{
+    text-align: center;
+    color: black;
+}
+img{
+    text-align: center;
+    width: 15%;
+    height: 35%;
+}
+
+@media (max-width: 576px) {
+    .btn-success{
+        border-radius: 5px;
+    }
+ }
+ 
