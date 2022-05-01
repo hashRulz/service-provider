@@ -1,0 +1,17 @@
+.btn-link{
+    color: green;
+}
+
+#btn-submit {
+    margin-top: 10px;
+    text-align: center;
+    width: 20%;
+    border-radius: 15px;
+}
+
+@media (max-width: 576px) {
+    #btn-submit {
+        width: 55%;
+    }
+
+}

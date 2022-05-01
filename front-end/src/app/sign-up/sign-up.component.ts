@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,9 @@ export class SignUpComponent implements OnInit {
     if(val=='false')
       this.content= "Join as a client"
 
+  }
+  redirect(){
+    this.router.navigate(['register'])
   }
 
 }

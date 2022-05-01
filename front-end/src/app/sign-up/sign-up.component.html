@@ -47,8 +47,8 @@
         </div>
         <div class="col-md-12 col-sm-12">
             <div class="text-center" id="btn-submit">
-                <button type="button" class="btn btn-success">{{content}}</button>
-                <p class="mb-0" style="margin-top: 20px;">Already have an account? <a href="#" style="color: green;">
+                <button type="button" class="btn btn-success" (click)="redirect()">{{content}}</button>
+                <p class="mb-0" style="margin-top: 20px;">Already have an account? <a href="/login" style="color: green;">
                         Log In
                     </a>
                 </p>
