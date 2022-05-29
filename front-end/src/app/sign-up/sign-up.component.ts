@@ -13,17 +13,17 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  content : any ="Join as a client";
+  content : any ="Regjistrohu si klient";
   signUptype : boolean = true;
 
 
   contentChange(val : any){
     console.log(val);
     if(val=='true' || val == null){
-      this.content ="Join as a Business/Expert";
+      this.content ="Regjistrohu si Biznes/ekspert";
     }
     if(val=='false')
-      this.content= "Join as a client"
+      this.content= "Regjistrohu si klient"
 
   }
   redirect(){

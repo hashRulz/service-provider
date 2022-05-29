@@ -36,6 +36,7 @@ img{
 @media (max-width: 576px) {
     .btn-success{
         border-radius: 5px;
+        width: 200px;
     }
    
  }
@@ -47,3 +48,9 @@ img{
    
  }
  
+ @media (min-width: 576px) and (max-width: 768px ) {
+    .btn-success{
+        width: 200px;
+    }
+   
+ }

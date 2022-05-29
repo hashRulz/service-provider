@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
+                <div class="form-group col-md-6 col-sm-12">
                     <label for="firstName"> <i class="fa fa-user" aria-hidden="true"></i> First Name</label>
                     <input type="text" formControlName="firstName" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -13,7 +13,7 @@
                         <div *ngIf="f.firstName.errors.required">First Name is required</div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6 col-sm-12">
                     <label for="lastName"><i class="fa fa-user-secret" aria-hidden="true"></i> Last Name</label>
                     <input type="text" formControlName="lastName" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
@@ -21,7 +21,7 @@
                         <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6 col-sm-12">
                     <label for="username"><i class="fa fa-envelope" aria-hidden="true"></i> Email</label>
                     <input type="text" formControlName="username" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
@@ -29,7 +29,7 @@
                         <div *ngIf="f.username.errors.required">Username is required</div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6 col-sm-12">
                     <label for="password"><i class="fa fa-key" aria-hidden="true"></i> Password</label>
                     <input type="password" formControlName="password" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
@@ -38,7 +38,7 @@
                         <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6 col-sm-12">
                     <label for="password"><i class="fa fa-lock" aria-hidden="true"></i> Re-enter Password</label>
                     <input type="password" formControlName="retypePassword" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.retypePassword.errors }" (change)="onPasswordChange()"/>
@@ -47,12 +47,15 @@
                         <div *ngIf="f.retypePassword.errors.mismatch">Passwords do not match</div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <button [disabled]="loading" class="btn btn-success" id="btn-submit">
+                <div class="form-group col-md-6 col-sm-12" style="text-align: center;">
+                    <button [disabled]="loading" class="btn btn-success" id="btn-submit" style="width: 150px;">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Register
                     </button>
-                    <a routerLink="/login" class="btn btn-link">Already have an account? Log In</a>
+                   
+                </div>
+                <div class="form-group col-md-6 col-sm-12" style="text-align: center">
+                   <span>Already have an account? </span> <a routerLink="/login" class="btn btn-link">Log In</a>
                 </div>
             </form>
         </div>
