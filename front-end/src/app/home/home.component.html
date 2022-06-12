@@ -1,48 +1,243 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'">
-    <mat-toolbar> <button
-      type="button"
-      aria-label="Toggle sidenav"
-      mat-icon-button
-      (click)="drawer.toggle()"
-      
-     >
-      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    </button></mat-toolbar>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar> <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button></mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="home">How It Works</a>
-      <a mat-list-item  href="case"> About Mbaro Pune</a>
-      <a mat-list-item  href="vacation"> Why Mbaro Pune</a>
-      <a mat-list-item  href="schedule">Pricing</a>
+      <a mat-list-item href="case"> About Mbaro Pune</a>
+      <a mat-list-item href="vacation"> Why Mbaro Pune</a>
+      <a mat-list-item href="schedule">Pricing</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button" id="mat-button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        
-       >
+      <button type="button" id="mat-button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img src="\assets\images\logo.jpg" height="50px">&nbsp;
       <span class="span-mbaro">MBARO PUNE</span>
       <span class="example-spacer"></span>
       <div class="col" style="text-align:right">
-        <button type="button" class="btn btn-primary " id="btn-post" data-toggle="button" aria-pressed="false" autocomplete="off">
-           Post a Job
-          </button>
-    </div>
+        <button type="button" class="btn btn-primary " id="btn-post" data-toggle="button" aria-pressed="false"
+          autocomplete="off">
+          Post a Job
+        </button>
+      </div>
     </mat-toolbar>
-   <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <div class="wrapper">
-  <div class="row" style="background-color: lightskyblue;height:200px">
-    hi
+  <div class="row" style="background-color: #0D6EFD;padding: 5px;">
+    <div class="input-group">
+      <div class="form-outline">
+        <input id="search-input" type="search" style=" height: 70px;" placeholder="what skill are you looking for?"
+          id="form1" class="form-control" />
+      </div>
+      <button id="search-button" type="button" style="border: 3px solid black;" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row" style="background-color:#3cc35f;padding: 25px;height: 800px;">
+    <div class="container-fluid">
+      <div class="row  d-flex justify-content-center">
+        <div class="col-md12"></div>
+      </div>
+      <div class="row  d-flex justify-content-center">
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+      <div class="row  d-flex justify-content-center" style="margin-top:2px ;">
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+      <div class="row  d-flex justify-content-center" style="margin-top:2px ;">
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+      <div class="row  d-flex justify-content-center" style="margin-top:2px ;">
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+        <div class="col-md-3  col-sm-12">
+
+          <div class="info-box">
+            <button>
+              <div class="info-box-content">
+                <span class="info-box-text">No Account Wfs Opened</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
