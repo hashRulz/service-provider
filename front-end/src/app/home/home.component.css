@@ -1,0 +1,39 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: whitesmoke;
+  color: black;
+  /* border: 0.5px solid grey; */
+}
+
+@media (max-width: 576px) {
+  #btn-post{
+    font-size: 12px;
+    /* width: 20px; */
+  }
+  .span-mbaro{
+    font-size: 16px;
+  }
+  #mat-button{
+    display: block;
+  }
+}
+/* @media (min-width: 778px) {
+ 
+  #mat-button{
+    display: none;
+  }
+} */
