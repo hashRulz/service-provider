@@ -23,6 +23,9 @@
     width: 300px;
   }
   
+  #btn-regi{
+    margin: 5%;
+  }
   @media (max-width: 576px) {
     #job {
         width: 220px;
