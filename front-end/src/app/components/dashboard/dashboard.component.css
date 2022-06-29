@@ -31,5 +31,6 @@
     #job {
         width: 220px;
         height: 100px;
+        font-size: smaller;
     }
  }
