@@ -3,6 +3,7 @@
     font-family: 'Roboto Slab', serif;
 }
 
+
 .align-self-center{
   
     padding: 20px;
@@ -35,6 +36,21 @@ img{
 @media (max-width: 576px) {
     .btn-success{
         border-radius: 5px;
+        width: 200px;
     }
+   
  }
  
+ @media (min-width: 576px) {
+    .card{
+        padding: 100px;
+    }
+   
+ }
+ 
+ @media (min-width: 576px) and (max-width: 768px ) {
+    .btn-success{
+        width: 200px;
+    }
+   
+ }

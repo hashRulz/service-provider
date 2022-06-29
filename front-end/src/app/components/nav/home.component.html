@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar> <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <h2>MENU</h2>
+      </button></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="home">How It Works</a>
+      <a mat-list-item href="case"> About Mbaro Pune</a>
+      <a mat-list-item href="vacation"> Why Mbaro Pune</a>
+      <a mat-list-item href="schedule">Pricing</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" id="mat-button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img  src="\assets\images\logo.jpg" id="img-logo" height="50px">&nbsp;
+      <div style="cursor: pointer" (click)="goHome()">
+        <span class="span-mbaro" >MBARO PUNE</span>
+
+      </div>
+      <span class="example-spacer"></span>
+      <div class="col" style="text-align:right">
+      </div>
+        <span class="example-spacer"></span>
+      <a mat-flat-button  class="btn btn-secondary btn-lg" id="btn-post" tabindex="-1" role="button" >Post a job</a>
+      
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

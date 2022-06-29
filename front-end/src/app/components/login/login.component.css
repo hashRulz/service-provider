@@ -1,0 +1,58 @@
+.card {
+    margin-top: 20px;
+    /* border: 1px solid grey; */
+}
+
+h2 {
+    text-align: center;
+}
+
+#submit-btn {
+    margin-top: 5px;
+    text-align: center;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.is-invalid input[type="email"],
+.is-invalid input[type="password"] {
+    border-color: rgb(216, 12, 12);
+    color: rgb(230, 14, 14);
+}
+
+.btn-link{
+ color: green;
+}
+@media (max-width: 576px) {
+    .card-body {
+        margin-top: 5px;
+        margin-left: 0px;
+    }
+}
+
+@media ((min-width: 577px) and (max-width: 768px)) {
+    .card-body {
+        margin-top: 25px;
+        margin-left: 200px;
+    }
+
+}
+
+/* @media ((min-width: 769px) and (max-width: 1200px)) {
+    .card-body {
+        margin-top: 50px;
+        margin-left: 300px !important;
+    }
+
+} */
+
+@media (min-width:1201px) {
+    .card-body {
+        margin-top: 50px;
+        margin-left: 400px;
+    }
+
+}
+.form-group{
+    padding:10px ;
+}
