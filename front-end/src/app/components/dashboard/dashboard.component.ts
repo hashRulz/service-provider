@@ -16,4 +16,8 @@ export class DashboardComponent implements OnInit {
   goRegister(){
     this.route.navigate(['/signup'])
   }
+
+  clickDiv(event:any){
+    console.log(event);
+  }
 }
