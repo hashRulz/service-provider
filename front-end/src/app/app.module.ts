@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SignUpComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
-    DashboardComponent
+    HomeComponent
   ],
   imports: [
+    FontAwesomeModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
