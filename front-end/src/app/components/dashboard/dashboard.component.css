@@ -1,9 +1,14 @@
 #top-container{
-    background-color: rgb(100, 199, 143);
+    background-color:#0af564;
     padding: 2%;
+   background-image: url("src/assets/images/business.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: auto;
 }
 #bottom-container{
-    background-color:rgb(68, 123, 171) ;
+    background-color:#96e3f2 ;
 }
  #job {
     width: 420px;
@@ -24,10 +29,17 @@
     width: 500px;
     margin-top: 3%;
   }
-  
+
   #btn-regi{
     margin: 5%;
+    background-color:black ;
+    border: none;
   }
+
+#btn-regi:hover{
+  background-color:#2b0010;
+  border: none;
+}
   @media (max-width: 576px) {
     #job {
         width: 220px;

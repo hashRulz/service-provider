@@ -38,3 +38,9 @@
   flex: 1 1 auto;
 }
 
+#btn-post{
+  background-color: black ;
+}
+#btn-post:hover{
+  background-color: #05252b ;
+}
