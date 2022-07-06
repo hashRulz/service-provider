@@ -17,8 +17,14 @@ table {
     #first-content{
         width: 100px;
     }
-   
-   
+   #btn-chat{
+    font-size: 12px;
+    width: 55px;
+   }
+   #icn-chat {
+    font-size: 17px;
+    padding: 0;
+  }
   }
 
   .ratings{
@@ -42,3 +48,8 @@ table {
 .review-stat{
     margin-bottom:2px;
 }
+
+.mat-icon {
+    font-size: 25px;
+    padding: 0;
+  }
