@@ -4,7 +4,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 interface Bussiness{
+  id:number
   name:string;
+  description:string;
 }
 
 @Component({
@@ -18,14 +20,22 @@ export class ClientComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ['id'];
   public dataSource = new MatTableDataSource<Bussiness>()
+  description!:string;
+  readMore=false;
+  longText = ``;
+  textLength = 0;
+
   json = [{
-    name:"abc"
-  },{}]
+    id:1,
+    name:"abc",
+    description :"This is long paragraph text containing several words continued. An example of implementing dynamically limit long text"
+  },{id:2,description :"e of implementing dynamically limit long text"}]
 
   constructor() { }
-
+//<span [attr.id]="'dots'+row.id">...</span><span [attr.id]="'more'+row.id" style="display: none"></span>
   ngOnInit(): void {
     this.dataSource.data = this.json as Bussiness[]
+    
   }
 
   applyFilter(event: Event) {
@@ -36,4 +46,10 @@ export class ClientComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  readMoreMethod(id:number){
+    if(id){
+      this.readMore = true;
+    }
+  }
+  
 }
