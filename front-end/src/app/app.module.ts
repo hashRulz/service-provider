@@ -19,6 +19,8 @@ import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule} from '@angular/material/menu';
+import { ClientComponent } from './components/client/client.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,11 @@ import { MatMenuModule} from '@angular/material/menu';
     SignUpComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ClientComponent
   ],
   imports: [
+    MatTableModule,
     MatMenuModule,
     FontAwesomeModule,
     BrowserModule,
