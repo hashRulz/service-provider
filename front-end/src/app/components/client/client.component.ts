@@ -22,18 +22,16 @@ export class ClientComponent implements OnInit {
   displayedColumns: string[] = ['id'];
   public dataSource = new MatTableDataSource<Bussiness>()
   description!:string;
-  // readMore  = false;
-  longText = ``;
-  textLength = 0;
-  val:boolean =true;
+
 
   json = [{
     id:1,
     name:"abc",
-    description :"This is long paragraph text containing several words continued. An example of implementing dynamically limit long text",
-    readMore:false
+    description :"This is sf sf s fs fs f s f sf s fsfsfsfsf sf s f sfsf sf sf s fsf sf sfsfsf sf sfsfsfsf sf s fsfsfsf sf sfs f sfsfsfsf sfsfsfs fssfsfsf long paragraph text containing several words continued. An example of implementing dynamically limit long text",
+    readMore:false,
+    length:150
   },
-  {id:2,description :"e of implementing dynamically limit long text"}]
+  {id:2,description :"e of implementing dynamically limit long text",length:20}]
 
   constructor() { }
 //<span [attr.id]="'dots'+row.id">...</span><span [attr.id]="'more'+row.id" style="display: none"></span>
@@ -49,13 +47,6 @@ export class ClientComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-  readMoreMethod(id:number,val:boolean){
-      if(id){
-         this.val != this.val
-      }
-      // this.readMore = true;
-   
   }
   
 }

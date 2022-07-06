@@ -23,18 +23,18 @@
                     <div class="p-2">
                     <div class="d-flex justify-content-center" style="margin-top:5%"> 
                         <div>
-                            {{(row.readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!row.readMore">...</span>
-                            <a href="javascript:;" *ngIf="!row.readMore" (click)="row.readMore=true">Read More</a>
+                            {{(row.readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!row.readMore  && (row.length > 80) ">...</span>
+                            <a href="javascript:;" *ngIf="!row.readMore && (row.length > 80)" (click)="row.readMore=true">Read More</a>
                             <a href="javascript:;" *ngIf="row.readMore" (click)="row.readMore=false">Read Less</a>
                         </div>
                        
                     </div>
                         
                     </div>
-                    <div class="p-2  ">
+                    <div class="p-2  " id="last-content">
                        
                         <b>$12/hr</b>
-                        <div style="margin-top:5%">
+                        <div style="margin-top:55%">
                          <button type="button" id="btn-chat" class="btn btn-outline-success">    <mat-icon id="icn-chat">chat</mat-icon>
                                 chat</button>
 
@@ -42,7 +42,7 @@
                     </div>
                     
                 </div>
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row" id="review">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="ratings">
                             <i class="fa fa-star rating-color"></i>

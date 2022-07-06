@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   }
 
   clickDiv(event:any){
+    console.log(event)
     //get data from back end for each category using "event"
     this.route.navigate(['/client'])
   }
