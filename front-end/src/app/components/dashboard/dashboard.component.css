@@ -1,14 +1,14 @@
 #top-container{
     background-color:#0af564;
+    background-image: url('../../../assets/images/aerial-view-business-team.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
     padding: 2%;
-   background-image: url("src/assets/images/business.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  height: auto;
+    height: 500px;
 }
 #bottom-container{
-    background-color:#96e3f2 ;
+    background-color:rgb(255, 255, 255) ;
 }
  #job {
     width: 420px;
@@ -45,5 +45,9 @@
         width: 220px;
         height: 100px;
         font-size: smaller;
+    }
+
+    #top-container{
+      height: 300px;
     }
  }

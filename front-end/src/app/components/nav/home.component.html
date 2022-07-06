@@ -17,16 +17,40 @@
       <button type="button" id="mat-button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <img  src="\assets\images\logo.png" id="img-logo" height="50px">&nbsp;
+      <!-- <img  src="\assets\images\logo.png" id="img-logo" height="50px">&nbsp; -->
       <div style="cursor: pointer" (click)="goHome()">
         <span class="span-mbaro" style="font-weight: bolder;font-family: 'Ink Free'">MBARO PUNE</span>
 
       </div>
-      <span class="example-spacer"></span>
-      <div class="col" style="text-align:right">
+      <span *ngIf="!userLoggedIn"  class="example-spacer"></span>
+      <div   class="col" style="text-align:right">
       </div>
-        <span class="example-spacer"></span>
-      <a mat-flat-button  class="btn btn-primary btn-lg" id="btn-post" tabindex="-1" role="button" >Post a Job</a>
+        <span *ngIf="!userLoggedIn"  class="example-spacer"></span>
+      <a *ngIf="!userLoggedIn" mat-flat-button  class="btn btn-primary btn-lg" id="btn-post" href="signup" tabindex="-1" role="button" >Register
+      </a>
+      <div *ngIf="userLoggedIn" class="row mr-2 ml-auto">
+        <ul class="row m-0 align-items-center">
+          <li>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user mt-2 d-flex align-items-center"
+            >
+              <img src="../../../assets/images/NicePng_gray-circle-png_1366211.png"  style="width:  45px;" alt="" class="user-image mr-1 p-2" />
+
+              {{userName}}
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon
+              >
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>Logout
+              </button>
+            </mat-menu>
+          </li>
+        </ul>
+      </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

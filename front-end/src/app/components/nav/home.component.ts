@@ -15,7 +15,9 @@ export class HomeComponent {
   faSignIn = faSignIn;
   faMoneyBill = faMoneyBill;
   faQuestion =faQuestion;
-
+  userName:string ="";
+  userLoggedIn:boolean=false;
+  
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
