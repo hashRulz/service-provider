@@ -23,9 +23,9 @@
                     <div class="p-2">
                     <div class="d-flex justify-content-center" style="margin-top:5%"> 
                         <div>
-                            {{(readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!readMore">...</span>
-                            <a href="javascript:;" *ngIf="!readMore || textLength > 8" (click)="readMoreMethod(row.id)">[Read More]</a>
-                            <a href="javascript:;" *ngIf="readMore" (click)="readMore=false">[Read Less]</a>
+                            {{(row.readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!row.readMore">...</span>
+                            <a href="javascript:;" *ngIf="!row.readMore" (click)="row.readMore=true">Read More</a>
+                            <a href="javascript:;" *ngIf="row.readMore" (click)="row.readMore=false">Read Less</a>
                         </div>
                        
                     </div>
