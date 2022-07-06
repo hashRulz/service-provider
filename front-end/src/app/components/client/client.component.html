@@ -14,14 +14,21 @@
                         <img src="../../../assets/images/NicePng_gray-circle-png_1366211.png" id="dp"  alt="" class="user-image mr-1 p-2" />
                         <div class="p-2">Bussiness name
                             <div class="d-flex flex-row">
-                                <button type="button" class="btn btn-link" id="btn-see">see more</button>
+                                <button type="button" class="btn btn-link" id="btn-see">See more</button>
                             </div>
                         </div>
                             
                          
                     </div>
                     <div class="p-2">
-                    <div class="d-flex justify-content-center"> ssssssssssss sssssssss sssss sssssss ssssss ssssss ssssss ss sss sss ssss ssss ssssss sssss ssssss s sssss ssss  ssssss ssss ss ss sssss sss  ssss sss sssss  ssss sssss ssss s</div>
+                    <div class="d-flex justify-content-center" style="margin-top:5%"> 
+                        <div>
+                            {{(readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!readMore">...</span>
+                            <a href="javascript:;" *ngIf="!readMore || textLength > 8" (click)="readMoreMethod(row.id)">[Read More]</a>
+                            <a href="javascript:;" *ngIf="readMore" (click)="readMore=false">[Read Less]</a>
+                        </div>
+                       
+                    </div>
                         
                     </div>
                     <div class="p-2  ">
