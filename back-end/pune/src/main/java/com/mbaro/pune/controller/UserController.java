@@ -33,12 +33,13 @@ public class UserController {
     @PostMapping("/user/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         try {
+            System.out.println(user);
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             user.setEnabled(true);
             userService.saveUser(user);
 
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>("success",HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
