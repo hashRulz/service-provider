@@ -21,6 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule} from '@angular/material/menu';
 import { ClientComponent } from './components/client/client.component';
 import {MatTableModule} from '@angular/material/table';
+import { SignupService } from './service/signup.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import {MatTableModule} from '@angular/material/table';
     ClientComponent
   ],
   imports: [
+    HttpClientModule,
     MatTableModule,
     MatMenuModule,
     FontAwesomeModule,

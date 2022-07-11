@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignupService } from 'src/app/service/signup.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private singup:SignupService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,15 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.invalid) {
       return;
+    }
+    else{
+      this.singup.register(this.registerForm.value).subscribe((res)=>{
+        console.log(res)
+        if(res === "success"){
+          this.loading = false;
+          this.router.navigate(['/'])
+        }
+      })
     }
 
     this.loading = true;
