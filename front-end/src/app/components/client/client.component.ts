@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { RouteConfigLoadEnd, Router } from '@angular/router';
 
 interface Bussiness{
   id:number
@@ -33,7 +34,9 @@ export class ClientComponent implements OnInit {
   },
   {id:2,description :"e of implementing dynamically limit long text",length:20}]
 
-  constructor() { }
+  constructor(private route:Router) { 
+   
+  }
 //<span [attr.id]="'dots'+row.id">...</span><span [attr.id]="'more'+row.id" style="display: none"></span>
   ngOnInit(): void {
     this.dataSource.data = this.json as Bussiness[]
@@ -47,6 +50,10 @@ export class ClientComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  seeBusiness(){
+    this.route.navigate(['/business']);
   }
   
 }
