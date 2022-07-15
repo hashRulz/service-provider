@@ -8,7 +8,7 @@ import {render} from 'creditcardpayments/creditCardPayments'
 })
 export class BusinessComponent implements OnInit {
 
-  imgCollection: Array<object> = [
+  imageObject: Array<object> = [
     {
       image: 'https://loremflickr.com/g/600/400/paris',
       thumbImage: 'https://loremflickr.com/g/1200/800/paris',

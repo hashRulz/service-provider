@@ -1,5 +1,9 @@
-<div id="mypaypal">
+<!-- <div id="mypaypal">
                                 
-</div>
+</div> -->
 
-<ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
+
+<div #container [ngStyle]="{width: 800+'px', height: 400+'px'}">
+    <ng-image-slider #nav [images]="imageObject" [infinite]="false" [manageImageRatio]=true [autoSlide]="1"
+      [animationSpeed]="0.1" [imageSize]="{width: 742, height: 542+'px', space: 10}" slideImage="1"></ng-image-slider>
+  </div>

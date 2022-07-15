@@ -23,6 +23,8 @@ import { ClientComponent } from './components/client/client.component';
 import {MatTableModule} from '@angular/material/table';
 import { SignupService } from './service/signup.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { BusinessComponent } from './components/business/business.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ClientComponent
+    ClientComponent,
+    BusinessComponent
   ],
   imports: [
+    NgImageSliderModule,
     HttpClientModule,
     MatTableModule,
     MatMenuModule,
