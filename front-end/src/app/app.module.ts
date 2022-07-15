@@ -23,6 +23,8 @@ import { ClientComponent } from './components/client/client.component';
 import {MatTableModule} from '@angular/material/table';
 import { SignupService } from './service/signup.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './components/chat/chat.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ClientComponent
+    ClientComponent,
+    ChatComponent
   ],
   imports: [
     HttpClientModule,
@@ -49,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
