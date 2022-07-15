@@ -3,6 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
+import {ChatComponent} from "../chat/chat.component";
+import {MatDialog} from "@angular/material/dialog";
 
 interface Bussiness{
   id:number
@@ -34,13 +36,14 @@ export class ClientComponent implements OnInit {
   },
   {id:2,description :"e of implementing dynamically limit long text",length:20}]
 
-  constructor(private route:Router) { 
-   
+  constructor(private route:Router,
+              private dialogBox: MatDialog) {
+
   }
 //<span [attr.id]="'dots'+row.id">...</span><span [attr.id]="'more'+row.id" style="display: none"></span>
   ngOnInit(): void {
     this.dataSource.data = this.json as Bussiness[]
-    
+
   }
 
   applyFilter(event: Event) {
@@ -55,5 +58,13 @@ export class ClientComponent implements OnInit {
   seeBusiness(){
     this.route.navigate(['/business']);
   }
-  
+
+  openChatModal(){
+    const dialogRef = this.dialogBox.open(ChatComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 }

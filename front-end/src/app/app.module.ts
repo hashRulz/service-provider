@@ -25,6 +25,9 @@ import { SignupService } from './service/signup.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { BusinessComponent } from './components/business/business.component';
+// import { ChatComponent } from './components/chat/chat.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { BusinessComponent } from './components/business/business.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
