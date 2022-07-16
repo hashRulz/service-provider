@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {render} from 'creditcardpayments/creditCardPayments'
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-business',
@@ -8,36 +9,25 @@ import {render} from 'creditcardpayments/creditCardPayments'
 })
 export class BusinessComponent implements OnInit {
 
-  imgCollection: Array<object> = [
-    {
-      image: 'https://loremflickr.com/g/600/400/paris',
-      thumbImage: 'https://loremflickr.com/g/1200/800/paris',
-      alt: 'Image 1',
-      title: 'Image 1'
-    }, {
-      image: 'https://loremflickr.com/600/400/brazil,rio',
-      thumbImage: 'https://loremflickr.com/1200/800/brazil,rio',
-      title: 'Image 2',
-      alt: 'Image 2'
-    }, {
-      image: 'https://loremflickr.com/600/400/paris,girl/all',
-      thumbImage: 'https://loremflickr.com/1200/800/brazil,rio',
-      title: 'Image 3',
-      alt: 'Image 3'
-    }, {
-      image: 'https://loremflickr.com/600/400/brazil,rio',
-      thumbImage: 'https://loremflickr.com/1200/800/brazil,rio',
-      title: 'Image 4',
-      alt: 'Image 4'
-    }, {
-      image: 'https://loremflickr.com/600/400/paris,girl/all',
-      thumbImage: 'https://loremflickr.com/1200/800/paris,girl/all',
-      title: 'Image 5',
-      alt: 'Image 5'
-    }
-];
+  title = 'ng-carousel-demo';
+  mypaypal: any
+  
+  images = [
+    {title: '', short: '', src: "https://picsum.photos/id/700/900/500"},
+    {title: '', short: '', src: "https://picsum.photos/id/1011/900/500"},
+    {title: '', short: '', src: "https://picsum.photos/id/984/900/500"}
+  ];
+  
 
-  constructor() { 
+  constructor(config: NgbCarouselConfig) { 
+    config.interval = 2000;
+    config.keyboard = true;
+    config.pauseOnHover = true;
+
+    
+  }
+
+  ngOnInit(): void {
     render({
       id:"#mypaypal",
       currency:"USD",
@@ -46,9 +36,6 @@ export class BusinessComponent implements OnInit {
         alert("Transaction succesfull")
       },
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }
