@@ -23,8 +23,9 @@ import { ClientComponent } from './components/client/client.component';
 import {MatTableModule} from '@angular/material/table';
 import { SignupService } from './service/signup.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ChatComponent } from './components/chat/chat.component';
+// import { ChatComponent } from './components/chat/chat.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BusinessComponent } from './components/business/business.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegisterComponent,
     HomeComponent,
     ClientComponent,
-    ChatComponent
+    BusinessComponent
+    // ChatComponent
   ],
   imports: [
     HttpClientModule,
