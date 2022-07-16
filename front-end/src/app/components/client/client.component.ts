@@ -34,7 +34,8 @@ export class ClientComponent implements OnInit {
     readMore:false,
     length:150
   },
-  {id:2,description :"e of implementing dynamically limit long text",length:20}]
+  {id:2,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20}]
 
   constructor(private route:Router,
               private dialogBox: MatDialog) {

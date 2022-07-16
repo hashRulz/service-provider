@@ -1,6 +1,10 @@
+.container{
+    height: 100%;
+}
 .card {
     margin-top: 20px;
     /* border: 1px solid grey; */
+    padding-bottom: 6%;
 }
 
 h2 {

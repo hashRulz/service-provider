@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HomeComponent } from '../nav/home.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,8 @@ export class DashboardComponent implements OnInit {
   constructor(private route:Router) { }
 
   ngOnInit(): void {
+    // HomeComponent.prototype.reloadPage()
+
   }
 
   goRegister(){
