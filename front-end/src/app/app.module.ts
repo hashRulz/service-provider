@@ -28,6 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BusinessComponent } from './components/business/business.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './components/chat/chat.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ChatComponent } from './components/chat/chat.component';
     HomeComponent,
     ClientComponent,
     BusinessComponent,
-    ChatComponent
+    ChatComponent,
+    FooterComponent
   ],
   imports: [
     NgbModule,
