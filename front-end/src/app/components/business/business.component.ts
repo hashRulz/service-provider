@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {render} from 'creditcardpayments/creditCardPayments'
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { RouteConfigLoadEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-business',
@@ -19,7 +20,7 @@ export class BusinessComponent implements OnInit {
   ];
   
 
-  constructor(config: NgbCarouselConfig) { 
+  constructor(config: NgbCarouselConfig, private route:Router) { 
     config.interval = 2000;
     config.keyboard = true;
     config.pauseOnHover = true;
@@ -38,4 +39,7 @@ export class BusinessComponent implements OnInit {
     });
   }
 
+  openChat(){
+    this.route.navigate(['chat'])
+  }
 }

@@ -7,6 +7,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ClientComponent } from './components/client/client.component';
 import { BusinessComponent } from './components/business/business.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', component: DashboardComponent },
   { path: 'client', component: ClientComponent },
-  { path: 'business', component: BusinessComponent }
+  { path: 'business', component: BusinessComponent },
+  { path: 'chat',component:ChatComponent}
 ];
 
 @NgModule({
