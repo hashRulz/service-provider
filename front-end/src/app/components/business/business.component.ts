@@ -40,6 +40,6 @@ export class BusinessComponent implements OnInit {
   }
 
   openChat(){
-    this.route.navigate(['chat'])
+    this.route.navigate(['message'])
   }
 }
