@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -24,9 +25,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserRepository userRepository;
-
     @GetMapping(path = "/basicauth")
     public AuthenticationBean user(Principal user) {
         return new AuthenticationBean("You are authenticated");
@@ -35,14 +33,25 @@ public class UserController {
     @PostMapping("/user/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         try {
+            System.out.println(user);
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
-            System.out.println("************"+user);
+            user.setEnabled(true);
             userService.saveUser(user);
 
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>("success",HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getAllUsers")
+    public ResponseEntity<List<User>> getAllUsers(){
+        try {
+
+            return new ResponseEntity<>(userService.getAll(),HttpStatus.OK);
+        }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

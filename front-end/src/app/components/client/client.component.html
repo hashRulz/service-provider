@@ -2,47 +2,46 @@
 
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
-      
+
           <!-- ID Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-            <td mat-cell *matCellDef="let row"> 
-             
-                
+            <td mat-cell *matCellDef="let row">
+
+
                 <div class="d-flex justify-content-between">
-                    <div class="p-2" id="first-content">                
+                    <div class="p-2" id="first-content">
                         <img src="../../../assets/images/NicePng_gray-circle-png_1366211.png" id="dp"  alt="" class="user-image mr-1 p-2" />
                         <div class="p-2">Bussiness name
                             <div class="d-flex flex-row">
-                                <button type="button" class="btn btn-link" id="btn-see">See more</button>
+                                <button type="button" class="btn btn-link" id="btn-see" (click)="seeBusiness()">See more</button>
                             </div>
                         </div>
-                            
-                         
+
+
                     </div>
-                    <div class="p-2">
-                    <div class="d-flex justify-content-center" style="margin-top:5%"> 
+                    <div class="container-fluid" style="margin-top:1%">
                         <div>
-                            {{(readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!readMore">...</span>
-                            <a href="javascript:;" *ngIf="!readMore || textLength > 8" (click)="readMoreMethod(row.id)">[Read More]</a>
-                            <a href="javascript:;" *ngIf="readMore" (click)="readMore=false">[Read Less]</a>
+                            {{(row.readMore) ? row.description : row.description | slice:0:80}} <span  *ngIf="!row.readMore  && (row.length > 80) ">...</span>
+                            <a href="javascript:;" *ngIf="!row.readMore && (row.length > 80)" (click)="row.readMore=true">Read More</a>
+                            <a href="javascript:;" *ngIf="row.readMore" (click)="row.readMore=false">Read Less</a>
                         </div>
-                       
+
                     </div>
-                        
-                    </div>
-                    <div class="p-2  ">
-                       
-                        <b>$12/hr</b>
-                        <div style="margin-top:5%">
-                         <button type="button" id="btn-chat" class="btn btn-outline-success">    <mat-icon id="icn-chat">chat</mat-icon>
+
+                    <div class="p-2  " id="last-content">
+
+                        <b><p id="price">$12/hr</p></b>
+                        <div style="margin-top:55%">
+                             <button type="button" id="btn-chat" class="btn btn-outline-success" (click)="openChatModal()" >    <mat-icon id="icn-chat">chat</mat-icon>
                                 chat</button>
 
                         </div>
+
                     </div>
-                    
+
                 </div>
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row" id="review">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="ratings">
                             <i class="fa fa-star rating-color"></i>
@@ -54,24 +53,24 @@
                         <h5 class="review-count">12 Reviews</h5>
                     </div>
                 </div>
-                
-            
+
+
             </td>
           </ng-container>
-      
-    
-          
-        
-      
+
+
+
+
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
+
           <!-- Row shown when there is no matching data. -->
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data matching</td>
           </tr>
         </table>
-      
+
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
       </div>
 

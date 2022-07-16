@@ -21,6 +21,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule} from '@angular/material/menu';
 import { ClientComponent } from './components/client/client.component';
 import {MatTableModule} from '@angular/material/table';
+import { SignupService } from './service/signup.service';
+import { HttpClientModule } from '@angular/common/http';
+// import { ChatComponent } from './components/chat/chat.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BusinessComponent } from './components/business/business.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +37,13 @@ import {MatTableModule} from '@angular/material/table';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ClientComponent
+    ClientComponent,
+    BusinessComponent,
+    ChatComponent
   ],
   imports: [
+    NgbModule,
+    HttpClientModule,
     MatTableModule,
     MatMenuModule,
     FontAwesomeModule,
@@ -46,7 +57,8 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
