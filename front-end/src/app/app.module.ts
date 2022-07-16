@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BusinessComponent } from './components/business/business.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     HomeComponent,
     ClientComponent,
-    BusinessComponent
-    // ChatComponent
+    BusinessComponent,
+    ChatComponent
   ],
   imports: [
     NgbModule,

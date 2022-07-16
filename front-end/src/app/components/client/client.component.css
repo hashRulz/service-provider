@@ -10,8 +10,15 @@ table {
     width: 100%;
     height: 100%;
   }
- #dp{width:  145px;}
+ #dp{width:  145px;
+margin-left: -11%;}
   
+ #price{
+    font-size: 20px;
+ }
+ #btn-chat{
+    width: 155px;
+   }
 @media (max-width: 576px) {
     #dp{
         width: 75px;

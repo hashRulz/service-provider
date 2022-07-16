@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
 // import {ChatComponent} from "../chat/chat.component";
 import {MatDialog} from "@angular/material/dialog";
+import { ChatComponent } from '../chat/chat.component';
 
 interface Bussiness{
   id:number
@@ -60,10 +61,10 @@ export class ClientComponent implements OnInit {
   }
 
   openChatModal(){
-    // const dialogRef = this.dialogBox.open(ChatComponent);
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+    const dialogRef = this.dialogBox.open(ChatComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 
