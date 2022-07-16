@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
-import {ChatComponent} from "../chat/chat.component";
+// import {ChatComponent} from "../chat/chat.component";
 import {MatDialog} from "@angular/material/dialog";
 
 interface Bussiness{
@@ -56,14 +56,14 @@ export class ClientComponent implements OnInit {
   }
 
   seeBusiness(){
-    this.route.navigate(['/business']);
+    this.route.navigate(['business']);
   }
 
   openChatModal(){
-    const dialogRef = this.dialogBox.open(ChatComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // const dialogRef = this.dialogBox.open(ChatComponent);
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
 
