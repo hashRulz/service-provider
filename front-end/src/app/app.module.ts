@@ -29,6 +29,9 @@ import { BusinessComponent } from './components/business/business.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './components/chat/chat.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MessageComponent } from './components/message/message.component';
+import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
+import { PostJobComponent } from './components/post-job/post-job.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { FooterComponent } from './components/footer/footer.component';
     ClientComponent,
     BusinessComponent,
     ChatComponent,
-    FooterComponent
+    FooterComponent,
+    MessageComponent,
+    BusinessProfileComponent,
+    PostJobComponent
   ],
   imports: [
     NgbModule,
