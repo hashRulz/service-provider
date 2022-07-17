@@ -33,6 +33,8 @@ import { MessageComponent } from './components/message/message.component';
 import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
 import { PostJobComponent } from './components/post-job/post-job.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FooterComponent,
     MessageComponent,
     BusinessProfileComponent,
-    PostJobComponent
+    PostJobComponent,
+    CreatePostComponent
   ],
   imports: [
+    MatSelectModule,
     MatPaginatorModule,
     NgbModule,
     HttpClientModule,
