@@ -32,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MessageComponent } from './components/message/message.component';
 import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
 import { PostJobComponent } from './components/post-job/post-job.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PostJobComponent } from './components/post-job/post-job.component';
     PostJobComponent
   ],
   imports: [
+    MatPaginatorModule,
     NgbModule,
     HttpClientModule,
     MatTableModule,
