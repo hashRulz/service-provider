@@ -1,5 +1,6 @@
 <head> 
-     </head>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+</head>
 <div class="container">
     <br>
     <div class="row justify-content-end">
@@ -19,7 +20,7 @@
         <tr>
             <td id="td1">
                 <h2>Post Title</h2>
-                As your post storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.
+               
             </td>
             
             <td>
@@ -32,12 +33,12 @@
         <tr>
             <td id="td1">
                 <h2>Category</h2>
-                Choose the category most suitable for your Post.
+               
             
             <td>
                 <div id="descRow" >
-                    <mat-form-field appearance="fill">
-                        <mat-label>Choose an option</mat-label>
+                   
+                       
                         <select matNativeControl>
                           <option value="" selected>Choose an option</option>
                           <option value="volvo">Volvo</option>
@@ -45,20 +46,73 @@
                           <option value="mercedes">Mercedes</option>
                           <option value="audi">Audi</option>
                         </select>
-                      </mat-form-field>
+                      
                 </div>
             </td>
         </tr>
         <tr>
             <td id="td1">
                 <h2>Images</h2>
-                You can upload up to 6 images about your post.
+              
             
             <td>
+              <div *ngFor="let progressInfo of progressInfos" class="mb-2">
+                <span>{{ progressInfo.fileName }}</span>
+                <div class="progress">
+                  <div
+                    class="progress-bar progress-bar-info progress-bar-striped"
+                    role="progressbar"
+                    attr.aria-valuenow="{{ progressInfo.value }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    [ngStyle]="{ width: progressInfo.value + '%' }"
+                  >
+                    {{ progressInfo.value }}%
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <label class="btn btn-default p-0">
+                    <input type="file" id="fileUp" accept="image/*" multiple (change)="selectFiles($event)" />
+                  </label>
+                </div>
+                
+              </div>
                 <div id="imageUpload">
-ww
+                  
+                  <div>
+                    <img id="upImg" *ngFor='let preview of previews' [src]="preview" class="preview">
+                  </div>
+                  <!-- <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
+                    <ul *ngFor="let msg of message; let i = index">
+                      <li>{{ msg }}</li>
+                    </ul>
+                  </div> -->
+                </div>
+                <div class="col-4">
+                  <button id="btn-upload"
+                    class="btn btn-outline-success btn-sm"
+                    [disabled]="!selectedFiles"
+                    (click)="uploadFiles()"
+                  >
+                    Upload
+                  </button>
                 </div>
             </td>
+        </tr>
+        <tr>
+          <td id="td1">
+            <h2>Description</h2>
+          
+        
+          </td>
+          <td>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Example textarea</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </td>
         </tr>
         </table>
 
@@ -66,3 +120,5 @@ ww
       </div>
 
 </div>
+
+

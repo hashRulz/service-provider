@@ -6,6 +6,11 @@
     margin-right: 5%;
 }
 
+.container{
+    min-height: 600px;
+    padding-top: 2%;
+ }
+
 table {
     width: 100%;
     height: 100%;

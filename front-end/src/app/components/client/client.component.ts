@@ -35,6 +35,9 @@ export class ClientComponent implements OnInit {
     length:150
   },
   {id:2,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20},
   {id:3,description :"e of implementing dynamically limit long text",length:20}]
 
   constructor(private route:Router,
@@ -45,6 +48,11 @@ export class ClientComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.data = this.json as Bussiness[]
 
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

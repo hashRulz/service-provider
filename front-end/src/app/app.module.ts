@@ -35,6 +35,7 @@ import { PostJobComponent } from './components/post-job/post-job.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,8 @@ import {MatSelectModule} from '@angular/material/select';
     CreatePostComponent
   ],
   imports: [
+    MatIconModule,
+    MatFormFieldModule,
     MatSelectModule,
     MatPaginatorModule,
     NgbModule,

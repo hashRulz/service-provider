@@ -1,6 +1,7 @@
 #td1{
     padding: 4%;
     max-width: 400px;
+    min-width: 200px;
 }
 
 #descInput{
@@ -21,6 +22,7 @@ td{
 
 table{
     width: 100%;
+   
 }
 
 select{
@@ -32,31 +34,61 @@ select{
 option{
     background-color: white;
 }
-
+#upImg{
+    max-width: 100px;
+    margin-left: 1%;
+}
 #imageUpload{
+    padding: 2%;
     border-radius: 25px;
-    max-width: 200px;
+    max-width: 100%;
     min-height: 100px;
     border:2px dotted black;
     text-align: center;
     vertical-align: middle;
 }
 
+#btn-upload{
+    margin-top: 5%;
+}
+
+textarea{
+    width: 700px;
+}
+
 @media (max-width: 576px) {
 
+    td{
+        padding-top: 2%;
+    }
+    #fileUp{
+        font-size: small;
+    }
+
+    h2{
+        font-size: small;
+    }
+    textarea{
+        max-width: 200px;
+        min-width: 200px;
+    }
     h1{
         font-size: smaller;
     }
 
     #td1{
         /* padding: 4%; */
-        min-width: 90px;
-        max-width:130px;
+        min-width: 100px;
+        max-width:250px;
     }
     select{
         background-color: #ccc;
         min-width: 100px;
-        min-height: 50px;
+        min-height: 25px;
+    }
+
+    #btn-upload{
+        margin-top: 15%;
     }
 
     #imageUpload{
@@ -78,4 +110,11 @@ option{
          transition: 0.5s;
         outline: none;
     }
+    .progress{
+        max-width: 200px;
+    }
 }
+
+.preview {
+    max-width: 200px;
+  }

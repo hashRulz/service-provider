@@ -32,12 +32,17 @@ export class PostJobComponent implements OnInit {
     description :"This is sf sf s fs fs f s f sf s fsfsfsfsf sf s f sfsf sf sf s fsf sf sfsfsf sf sfsfsfsf sf s fsfsfsf sf sfs f sfsfsfsf sfsfsfs fssfsfsf long paragraph text containing several words continued. An example of implementing dynamically limit long text",
     readMore:false,
     length:150
-  },
+  },{},{},{},{},{}
   ]
 
 
   ngOnInit(): void {
     this.dataSource.data = this.json as Job[]
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   goCreate(){
