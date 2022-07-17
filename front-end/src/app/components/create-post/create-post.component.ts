@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { RouteConfigLoadEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 interface Job{
   id:number
@@ -12,16 +13,15 @@ interface Job{
 }
 
 @Component({
-  selector: 'app-post-job',
-  templateUrl: './post-job.component.html',
-  styleUrls: ['./post-job.component.css']
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.css']
 })
-export class PostJobComponent implements OnInit {
+export class CreatePostComponent implements OnInit {
 
-  
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ['post','desc','action'];
+  displayedColumns: string[] = ['post','desc'];
   public dataSource = new MatTableDataSource<Job>()
   
   constructor(private route:Router) { }
@@ -35,14 +35,8 @@ export class PostJobComponent implements OnInit {
   },
   ]
 
-
   ngOnInit(): void {
     this.dataSource.data = this.json as Job[]
   }
 
-  goCreate(){
-      this.route.navigate([
-        'create-post'
-      ])    
-  }
 }

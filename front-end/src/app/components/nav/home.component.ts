@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private route: Router,
-    private auth:AuthService) {
+    public auth:AuthService) {
       // this.isLoggedIn = auth.isLoggedIn();
     }
 

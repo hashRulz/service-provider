@@ -33,7 +33,12 @@ th {
     align-items:left;
  }
 
- .mat-cell.cdk-cell.cdk-column-post.mat-column-post.ng-star-inserted{
+ .mat-header-cell{
+    text-align: center;
+ }
+
+ .mat-cell.cdk-cell.cdk-column-post.mat-column-post.ng-star-inserted,
+ .mat-cell.cdk-cell.cdk-column-desc.mat-column-desc.ng-star-inserted{
 
     padding: 2%;
  }
