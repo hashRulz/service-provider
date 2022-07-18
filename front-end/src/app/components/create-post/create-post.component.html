@@ -80,10 +80,9 @@
                 
               </div>
                 <div id="imageUpload">
-                  
-                  <div>
+             
                     <img id="upImg" *ngFor='let preview of previews' [src]="preview" class="preview">
-                  </div>
+                  
                   <!-- <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
                     <ul *ngFor="let msg of message; let i = index">
                       <li>{{ msg }}</li>
@@ -122,3 +121,21 @@
 </div>
 
 
+<!-- <div class="container row">
+  <div class="col-md-6">
+      <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="id"
+          name="name" />
+  </div>
+  <div class="col-md-6">
+      <input type="button" (click)="getImage()" value="Get Image">
+
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-12">
+      <div *ngIf=retrievedImage>
+          <img [src]="retrievedImage">
+      </div>
+  </div>
+</div> -->

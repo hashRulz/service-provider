@@ -26,13 +26,17 @@ export class CreatePostComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ['post','desc'];
   public dataSource = new MatTableDataSource<Job>()
-
+  retrievedImage: any;
   selectedFiles?: FileList;
   progressInfos: any[] = [];
   message: string[] = [];
   previews: string[] = [];
   imageInfos?: Observable<any>;
-  
+  retrieveResonse: any;
+  base64Data: any;
+  id:any;
+  temp: number =0;
+
   constructor(private route:Router, private uploadService:FileUploadService) { }
 
   json = [{
@@ -53,9 +57,12 @@ export class CreatePostComponent implements OnInit {
     this.message = [];
     this.progressInfos = [];
     this.selectedFiles = event.target.files;
-    // this.previews = [];
+    
+     this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = this.selectedFiles.length;
+      this.temp = this.temp +1;
+      const numberOfFiles = this.selectedFiles.length ;
+      
       for (let i = 0; i < numberOfFiles; i++) {
         const reader = new FileReader();
         reader.onload = (e: any) => {
@@ -63,7 +70,7 @@ export class CreatePostComponent implements OnInit {
 
           if(this.previews.length > 5){
 
-            alert("no")
+            alert("Cannot upload more than 6")
           }else{
             this.previews.push(e.target.result);
 
@@ -78,15 +85,20 @@ export class CreatePostComponent implements OnInit {
     this.message = [];
     if (this.selectedFiles) {
       for (let i = 0; i < this.selectedFiles.length; i++) {
+        console.log("sss")
         this.upload(i, this.selectedFiles[i]);
       }
     }
   }
 
   upload(idx: number, file: File): void {
+
     this.progressInfos[idx] = { value: 0, fileName: file.name };
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', file);
     if (file) {
-      this.uploadService.upload(file).subscribe({
+      this.uploadService.upload(uploadImageData).subscribe({
+        
         next: (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
@@ -102,5 +114,16 @@ export class CreatePostComponent implements OnInit {
           this.message.push(msg);
         }});
     }
+  }
+
+  getImage() {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.uploadService.getImage(1).subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
   }
 }
