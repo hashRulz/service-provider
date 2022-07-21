@@ -10,6 +10,7 @@ import { MessageComponent } from './components/message/message.component';
 import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
 import { PostJobComponent } from './components/post-job/post-job.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'message',component:MessageComponent},
   { path: 'bprofile', component:BusinessProfileComponent},
   { path: 'post', component:PostJobComponent},
-  { path: 'create-post',component:CreatePostComponent}
+  { path: 'create-post',component:CreatePostComponent},
+  { path: 'test',component:TestComponent}
 ];
 
 @NgModule({
