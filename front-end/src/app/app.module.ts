@@ -79,7 +79,7 @@ import { TestComponent } from './components/test/test.component';
     MatListModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [TestComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

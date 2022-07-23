@@ -1,28 +1,37 @@
-<main class="chat">
-    <div class="container">
-        <div class="chat-content">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
-                        <strong>{{chatMessage.user}}: </strong>
-                        <span>{{chatMessage.message}}</span>
-                    </li>
-                </ul>
-            </div>
+<!--The content below is only a placeholder and can be replaced.-->
+<<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+  <div id="main-content" class="container">
+  
+      <div class="row">
+          <div class="col-md-12">
+             {{ greeting }}
+          </div>
+      </div>
+      
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
+                    <button (click)="disconnect()" class="btn btn-default" type="submit">Disconnect
+                    </button>
+                </div>
+            </form>
         </div>
-        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
-            <div class="chat-send row">
-                <div class="col-2">
-                    <input type="text" class="form-control" name="user" id="input-user" ngModel>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" [(ngModel)]="name" class="form-control" name="name"> <br>
                 </div>
-                <div class="col-8">
-                    <input type="text" class="form-control" name="message" id="input-message" ngModel>
-                </div>
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </div>
-        </form>
+                <button (click)="sendMessage()" class="btn btn-default" type="submit">Send</button>
+            </form>
+        </div>
+  
+        <p> {{ greeting }}</p>
     </div>
-
-</main>
+   
+  </div>

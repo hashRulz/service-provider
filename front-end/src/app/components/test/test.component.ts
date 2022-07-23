@@ -10,20 +10,28 @@ import { WebsocketService } from 'src/app/service/websocket.service';
 })
 export class TestComponent implements OnInit {
 
-  constructor(public webSocketService: WebsocketService) { }
+  title = 'angular8-springboot-websocket';
 
-  ngOnInit(): void {
-    this.webSocketService.openWebSocket();
+  webSocketAPI: WebsocketService;
+  greeting: any;
+  name: string;
+  ngOnInit() {
+    this.webSocketAPI = new WebsocketService(new TestComponent());
   }
 
-  ngOnDestroy():void{
-    this.webSocketService.closeWebSocket();
+  connect(){
+    this.webSocketAPI._connect();
   }
 
-  sendMessage(sendForm: NgForm) {
-    console.log(sendForm.value)
-    const chat = new Chat(sendForm.value.user, sendForm.value.message);
-    this.webSocketService.sendMessage(chat);
-    sendForm.controls.message.reset();
+  disconnect(){
+    this.webSocketAPI._disconnect();
+  }
+
+  sendMessage(){
+    this.webSocketAPI._send(this.name);
+  }
+
+  handleMessage(message:any){
+    this.greeting = message;
   }
 }
