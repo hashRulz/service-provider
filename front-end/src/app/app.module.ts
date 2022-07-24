@@ -38,6 +38,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TestComponent } from './components/test/test.component';
 import { Store } from './util/Store';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -78,9 +79,10 @@ import { Store } from './util/Store';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
-  providers: [TestComponent,Store],
+  providers: [Store,TestComponent,{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

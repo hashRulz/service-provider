@@ -1,4 +1,4 @@
-<head> 
+<head>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 </head>
 <div class="container">
@@ -6,10 +6,10 @@
     <br>
     <div class="row justify-content-end">
         <div class="col-4">
-        
+
         </div>
         <div class="col-auto">
-            
+
         </div>
       </div>
       <br>
@@ -21,41 +21,41 @@
         <tr>
             <td id="td1">
                 <h2>Post Title</h2>
-               
+
             </td>
-            
+
             <td>
                 <div id="descRow" >
                    <input id="descInput"  [(ngModel)]="post.title" name="title">
                 </div>
             </td>
-         
+
         </tr>
         <tr>
             <td id="td1">
                 <h2>Category</h2>
-               
-            
+
+
             <td>
                 <div id="descRow" >
-                   
-                       
-                        <select matNativeControl [(ngModel)]="post.category" name="category"> 
+
+
+                        <select matNativeControl [(ngModel)]="post.category" name="category">
                           <option value="" selected>Choose an option</option>
                           <option value="volvo">Volvo</option>
-                          <option value="saab" disabled>Saab</option>
+                          <option value="saab" >Saab</option>
                           <option value="mercedes">Mercedes</option>
                           <option value="audi">Audi</option>
                         </select>
-                      
+
                 </div>
             </td>
         </tr>
         <tr>
             <td id="td1">
                 <h2>Images</h2>
-              
-            
+
+
             <td>
               <div *ngFor="let progressInfo of progressInfos" class="mb-2">
                 <span>{{ progressInfo.fileName }}</span>
@@ -78,12 +78,12 @@
                     <input type="file" id="fileUp" accept="image/*" multiple (change)="selectFiles($event)" />
                   </label>
                 </div>
-                
+
               </div>
                 <div id="imageUpload">
-             
+
                     <img id="upImg" *ngFor='let preview of previews' [src]="preview" class="preview">
-                  
+
                   <!-- <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
                     <ul *ngFor="let msg of message; let i = index">
                       <li>{{ msg }}</li>
@@ -104,8 +104,8 @@
         <tr>
           <td id="td1">
             <h2>Description</h2>
-          
-        
+
+
           </td>
           <td>
             <div class="form-group">
@@ -124,15 +124,15 @@
                 <button type="submit" class="btn btn-outline-success" style="margin-right: 2%">Submit</button>
                 <button type="button" class="btn btn-outline-danger">Cancel</button>
               </div>
-               
-              
+
+
             </div>
-            
+
           </td>
         </tr>
         </table>
 
-  
+
       </div>
   </form>
 
