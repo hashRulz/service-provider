@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 </head>
 <div class="container">
+  <form (ngSubmit)="addPost()">
     <br>
     <div class="row justify-content-end">
         <div class="col-4">
@@ -25,7 +26,7 @@
             
             <td>
                 <div id="descRow" >
-                   <input id="descInput">
+                   <input id="descInput"  [(ngModel)]="post.title" name="title">
                 </div>
             </td>
          
@@ -39,7 +40,7 @@
                 <div id="descRow" >
                    
                        
-                        <select matNativeControl>
+                        <select matNativeControl [(ngModel)]="post.category" name="category"> 
                           <option value="" selected>Choose an option</option>
                           <option value="volvo">Volvo</option>
                           <option value="saab" disabled>Saab</option>
@@ -109,7 +110,7 @@
           <td>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="post.description" name="description"></textarea>
             </div>
           </td>
         </tr>
@@ -120,7 +121,7 @@
           <td>
             <div class="row">
               <div class="col-md-6 offset-md-3" style="padding: 5%">
-                <button type="button" class="btn btn-outline-success" style="margin-right: 2%">Submit</button>
+                <button type="submit" class="btn btn-outline-success" style="margin-right: 2%">Submit</button>
                 <button type="button" class="btn btn-outline-danger">Cancel</button>
               </div>
                
@@ -133,6 +134,7 @@
 
   
       </div>
+  </form>
 
 </div>
 

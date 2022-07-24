@@ -5,7 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CommonService } from 'src/app/service/common.service';
 import { FileUploadService } from 'src/app/service/file-upload.service';
+import { Store } from 'src/app/util/Store';
 
 
 interface Job{
@@ -37,7 +39,18 @@ export class CreatePostComponent implements OnInit {
   id:any;
   temp: number =0;
 
-  constructor(private route:Router, private uploadService:FileUploadService) { }
+  post: any ={
+    userName: null,
+    title: null,
+    category: null,
+    imageid: null,
+    description: null
+  }
+
+  constructor(private route:Router,
+    private uploadService:FileUploadService,
+    public store: Store,
+    public commonService: CommonService) { }
 
   json = [{
     id:1,
@@ -57,12 +70,12 @@ export class CreatePostComponent implements OnInit {
     this.message = [];
     this.progressInfos = [];
     this.selectedFiles = event.target.files;
-    
+
      this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
       this.temp = this.temp +1;
       const numberOfFiles = this.selectedFiles.length ;
-      
+
       for (let i = 0; i < numberOfFiles; i++) {
         const reader = new FileReader();
         reader.onload = (e: any) => {
@@ -98,7 +111,7 @@ export class CreatePostComponent implements OnInit {
     uploadImageData.append('imageFile', file);
     if (file) {
       this.uploadService.upload(uploadImageData).subscribe({
-        
+
         next: (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
@@ -125,5 +138,19 @@ export class CreatePostComponent implements OnInit {
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
         }
       );
+  }
+
+  currentUser() {
+    return this.store.getData('username');
+  }
+
+  addPost(){
+    this.post.userName = this.currentUser();
+    this.commonService.addPost(this.post).subscribe(
+      res =>{
+        console.log(res);
+      }
+    );
+
   }
 }

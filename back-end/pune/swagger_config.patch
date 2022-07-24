@@ -1,0 +1,94 @@
+Index: HM Creations/hm/service-provider/back-end/pune/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- HM Creations/hm/service-provider/back-end/pune/pom.xml	(revision 03bcb00825aca23b4524cd698055f0af7777e922)
++++ HM Creations/hm/service-provider/back-end/pune/pom.xml	(revision c0d007d1417d6fd897630529d3efc9a2da8326a1)
+@@ -5,7 +5,7 @@
+ 	<parent>
+ 		<groupId>org.springframework.boot</groupId>
+ 		<artifactId>spring-boot-starter-parent</artifactId>
+-		<version>2.7.1</version>
++		<version>2.5.4</version>
+ 		<relativePath/> <!-- lookup parent from repository -->
+ 	</parent>
+ 	<groupId>com.mbaro</groupId>
+@@ -48,6 +48,18 @@
+ 			<groupId>org.springframework.boot</groupId>
+ 			<artifactId>spring-boot-starter-test</artifactId>
+ 			<scope>test</scope>
++		</dependency>
++		<dependency>
++			<groupId>io.springfox</groupId>
++			<artifactId>springfox-swagger2</artifactId>
++			<version>2.9.2</version>
++		</dependency>
++
++		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
++		<dependency>
++			<groupId>io.springfox</groupId>
++			<artifactId>springfox-swagger-ui</artifactId>
++			<version>2.9.2</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.springframework.security</groupId>
+Index: HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/PuneApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/PuneApplication.java	(revision 03bcb00825aca23b4524cd698055f0af7777e922)
++++ HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/PuneApplication.java	(revision c0d007d1417d6fd897630529d3efc9a2da8326a1)
+@@ -2,8 +2,10 @@
+ 
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
++import springfox.documentation.swagger2.annotations.EnableSwagger2;
+ 
+ @SpringBootApplication
++@EnableSwagger2
+ public class PuneApplication {
+ 
+ 	public static void main(String[] args) {
+Index: HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/config/SwaggerConfig.java
+===================================================================
+--- HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/config/SwaggerConfig.java	(revision c0d007d1417d6fd897630529d3efc9a2da8326a1)
++++ HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/config/SwaggerConfig.java	(revision c0d007d1417d6fd897630529d3efc9a2da8326a1)
+@@ -0,0 +1,21 @@
++package com.mbaro.pune.config;
++
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import springfox.documentation.builders.PathSelectors;
++import springfox.documentation.builders.RequestHandlerSelectors;
++import springfox.documentation.spi.DocumentationType;
++import springfox.documentation.spring.web.plugins.Docket;
++
++@Configuration
++public class SwaggerConfig {
++
++    @Bean
++    public Docket SwaggerApi(){
++        return new Docket(DocumentationType.SWAGGER_2)
++                .select()
++                .apis(RequestHandlerSelectors.any())
++                .paths(PathSelectors.any())
++                .build();
++    }
++}
+Index: HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/config/WebSecurityConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/config/WebSecurityConfig.java	(revision 03bcb00825aca23b4524cd698055f0af7777e922)
++++ HM Creations/hm/service-provider/back-end/pune/src/main/java/com/mbaro/pune/config/WebSecurityConfig.java	(revision c0d007d1417d6fd897630529d3efc9a2da8326a1)
+@@ -49,6 +49,7 @@
+         http.cors().and().csrf().
+                 disable().authorizeRequests()
+                 .antMatchers("/api/v1/basicauth").permitAll()
++                .antMatchers("/swagger-ui/**").permitAll()
+                 .antMatchers("/image/upload").permitAll()
+                 .antMatchers("/image/get/**").permitAll()
+                 .antMatchers("/api/v1/getAllUsers").hasAnyAuthority("Admin")

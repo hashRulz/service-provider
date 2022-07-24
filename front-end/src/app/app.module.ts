@@ -37,6 +37,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TestComponent } from './components/test/test.component';
+import { Store } from './util/Store';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { TestComponent } from './components/test/test.component';
     MatListModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [Store],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
