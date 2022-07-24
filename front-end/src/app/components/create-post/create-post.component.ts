@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { CommonService } from 'src/app/service/common.service';
 import { FileUploadService } from 'src/app/service/file-upload.service';
 import { Store } from 'src/app/util/Store';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 interface Job{
@@ -50,7 +51,8 @@ export class CreatePostComponent implements OnInit {
   constructor(private route:Router,
     private uploadService:FileUploadService,
     public store: Store,
-    public commonService: CommonService) { }
+    public commonService: CommonService,
+              private _snackBar: MatSnackBar) { }
 
   json = [{
     id:1,
@@ -149,8 +151,18 @@ export class CreatePostComponent implements OnInit {
     this.commonService.addPost(this.post).subscribe(
       res =>{
         console.log(res);
-      }
-    );
+        this.post={
+          userName: null,
+          title: null,
+          category: null,
+          imageid: null,
+          description: null
+        }
+        this._snackBar.open("suceess");
+      },
+    error => {
+      this._snackBar.open('Failure.!!!')
+    });
 
   }
 }

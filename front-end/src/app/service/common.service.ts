@@ -12,6 +12,6 @@ export class CommonService {
 
   addPost(post: any): Observable<any>{
     const url = AppConstants.baseURL + AppConstants.createPost;
-    return this.http.post(url, post);
+    return this.http.post(url, post,{ responseType: 'text' });
   }
 }
