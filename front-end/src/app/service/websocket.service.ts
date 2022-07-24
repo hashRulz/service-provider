@@ -54,8 +54,8 @@ _send(message:any) {
     this.stompClient.send("/app/hello", {}, JSON.stringify(message));
 }
 
-onMessageReceived(message:any) {
-    console.log("Message Recieved from Server :: " + message);
-    this.appComponent.handleMessage(JSON.stringify(message.body));
-}
+// onMessageReceived(message:any) {
+//     console.log("Message Recieved from Server :: " + message);
+//     this.appComponent.handleMessage(JSON.stringify(message.body));
+// }
 }

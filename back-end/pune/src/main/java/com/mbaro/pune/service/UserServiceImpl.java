@@ -51,4 +51,9 @@ public class UserServiceImpl implements UserService {
         List<User> users = userRepository.getUserCount();
         return users.size();
     }
+
+    @Override
+    public User findByUsername(String name) {
+        return userRepository.findByUsername(name);
+    }
 }

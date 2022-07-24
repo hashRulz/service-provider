@@ -56,4 +56,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("getUser/{uname}")
+    public ResponseEntity<User> getUserByUserName(@PathVariable("uname") String uname){
+        try {
+
+            return new ResponseEntity<>(userService.findByUsername(uname),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

@@ -1,37 +1,85 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-    enabled. Please enable
-    Javascript and reload this page!</h2></noscript>
-  <div id="main-content" class="container">
-  
-      <div class="row">
-          <div class="col-md-12">
-             {{ greeting }}
-          </div>
-      </div>
-      
-    <div class="row">
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
-                    <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
-                    <button (click)="disconnect()" class="btn btn-default" type="submit">Disconnect
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="name">What is your name?</label>
-                    <input type="text" [(ngModel)]="name" class="form-control" name="name"> <br>
-                </div>
-                <button (click)="sendMessage()" class="btn btn-default" type="submit">Send</button>
-            </form>
-        </div>
-  
-        <p> {{ greeting }}</p>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<div class="component">
+  <div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+      <div class="card-footer"></div>
     </div>
-   
   </div>
+  <div class="col-md-8 col-xl-6 chat">
+    <div class="card">
+      <div class="card-header msg_head">
+        <div class="d-flex bd-highlight">
+          <div class="img_cont">
+            <!-- <img [src]="otherUser?.propic" class="rounded-circle user_img" /> -->
+          </div>
+          <div class="user_info">
+            <span>Chat con {{ otherUser?.firstName }}</span>
+          </div>
+        </div>
+      </div>
+      <div #chat id="chat" class="card-body msg_card_body">
+        <!--messages - start> -->
+        <div *ngFor="let msg of messages | async">
+          <div
+            class="d-flex justify-content-start mb-4"
+            *ngIf="msg.sender === otherUser!.nickname; else thisUserMsg"
+          >
+            <div class="img_cont_msg">
+              <!-- <img
+                [src]="otherUser!.propic"
+                class="rounded-circle user_img_msg"
+              /> -->
+            </div>
+            <div class="msg_cotainer">
+              {{ msg.content }}
+              <span class="msg_time">{{
+                whenWasItPublished(msg.t_stamp)
+              }}</span>
+            </div>
+          </div>
+
+          <ng-template #thisUserMsg>
+            <div class="d-flex justify-content-end mb-4">
+              <div class="msg_cotainer_send">
+                {{ msg.content }}
+                <span class="msg_time_send">{{
+                  whenWasItPublished(msg.t_stamp)
+                }}</span>
+              </div>
+              <div class="img_cont_msg">
+                <!-- <img
+                  [src]="thisUser.propic"
+                  class="rounded-circle user_img_msg"
+                /> -->
+              </div>
+            </div>
+          </ng-template>
+        </div>
+        <!--messages - end-->
+      </div>
+      <div class="card-footer">
+        <div class="input-group">
+          <div class="input-group-append">
+            <span class="input-group-text attach_btn"
+              ><i class="fas fa-paperclip"></i
+            ></span>
+          </div>
+          <textarea
+            [formControl]="newMessage"
+            name=""
+            class="form-control type_msg"
+            placeholder="Type your message..."
+          ></textarea>
+          <div class="input-group-append">
+            <span (click)="sendMsg()" class="input-group-text send_btn"
+              ><i class="material-icons" style="font-size: 36px">send</i></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

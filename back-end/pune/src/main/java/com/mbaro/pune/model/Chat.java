@@ -2,9 +2,9 @@ package com.mbaro.pune.model;
 
 import javax.persistence.*;
 
-@Entity(name="Chat")
+@Entity
 @Table(name = "CHATS")
-public class ChatEntity {
+public class Chat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,13 +14,22 @@ public class ChatEntity {
     @Column(name = "name")
     private String name;
 
+//    private String Partecipant;
 
-    public ChatEntity() {
+    public Chat() {
     }
 
-    public ChatEntity(String name) {
+    public Chat(String name) {
         this.name = name;
     }
+
+//    public String getPartecipant() {
+//        return Partecipant;
+//    }
+//
+//    public void setPartecipant(String partecipant) {
+//        Partecipant = partecipant;
+//    }
 
     public long getChat_id() {
         return chat_id;

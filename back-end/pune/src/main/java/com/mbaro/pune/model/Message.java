@@ -2,9 +2,9 @@ package com.mbaro.pune.model;
 
 import javax.persistence.*;
 
-@Entity(name="Message")
+@Entity
 @Table(name = "MESSAGES")
-public class MessageEntity {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +12,7 @@ public class MessageEntity {
     private long ms_id;
 
     @Column(name = "chat_id")
-    private long chat_id;
+    private long chatId;
 
     @Column(name = "sender")
     private String sender;
@@ -23,13 +23,13 @@ public class MessageEntity {
     @Column(name = "content")
     private String content;
 
-    public MessageEntity() {}
+    public Message() {}
 
-    public MessageEntity(String sender, String t_stamp, String content, Long chat_id) {
+    public Message(String sender, String t_stamp, String content, Long chat_id) {
         this.sender = sender;
         this.t_stamp = t_stamp;
         this.content = content;
-        this.chat_id = chat_id;
+        this.chatId = chat_id;
     }
 
     public long getMs_id() {
@@ -41,11 +41,11 @@ public class MessageEntity {
     }
 
     public long getChat_id() {
-        return chat_id;
+        return chatId;
     }
 
     public void setChat_id(Long chat_id) {
-        this.chat_id = chat_id;
+        this.chatId = chat_id;
     }
 
     public String getSender() {
@@ -76,7 +76,7 @@ public class MessageEntity {
     public String toString() {
         return "MessageEntity{" +
                 "ms_id=" + ms_id +
-                ", chat_id=" + chat_id +
+                ", chat_id=" + chatId +
                 ", sender='" + sender + '\'' +
                 ", t_stamp='" + t_stamp + '\'' +
                 ", content='" + content + '\'' +

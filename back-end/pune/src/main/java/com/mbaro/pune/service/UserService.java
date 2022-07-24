@@ -20,4 +20,6 @@ public interface UserService {
     Optional<User> getUserById(long id);
 
     int getUserCount();
+
+    User findByUsername(String name);
 }

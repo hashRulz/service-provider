@@ -1,9 +1,9 @@
 package com.mbaro.pune.controller;
 
-import com.mbaro.pune.model.ChatEntity;
-import com.mbaro.pune.model.MessageEntity;
-import com.mbaro.pune.repository.ChatRepository;
-import com.mbaro.pune.repository.MessageRepository;
+import com.mbaro.pune.model.Chat;
+import com.mbaro.pune.model.Message;
+import com.mbaro.pune.service.ChatService;
+import com.mbaro.pune.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -25,49 +25,49 @@ public class ChatController {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
     @Autowired
-    private ChatRepository chatDAO;
+    private ChatService chatService;
     @Autowired
-    private MessageRepository messageDAO;
+    private MessageService messageService;
 
-    @MessageMapping("/chat/{to}") //to = nome canale
-    public void sendMessage(@DestinationVariable String to , MessageEntity message) {
+    @MessageMapping("/chat/{to}") //to = nome canalekjj
+    public void sendMessage(@DestinationVariable String to , Message message) {
         System.out.println("handling send message: " + message + " to: " + to);
         message.setChat_id(createAndOrGetChat(to));
         message.setT_stamp(generateTimeStamp());
-        message = messageDAO.save(message);
+        message = messageService.saveMessage(message);
         simpMessagingTemplate.convertAndSend("/topic/messages/" + to, message);
     }
 
-    @PostMapping("/getChats")
-    public List<ChatEntity> getChats(@RequestBody String user){
-        return chatDAO.findByPartecipant(user);
-    }
+//    @PostMapping("/getChats")
+//    public List<ChatEntity> getChats(@RequestBody String user){
+//        return chatDAO.findByPartecipant(user);
+//    }
 
     //returns an empty list if the chat doesn't exist
     @PostMapping("/getMessages")
-    public List<MessageEntity> getMessages(@RequestBody String chat) {
-        ChatEntity ce = chatDAO.findByName(chat);
+    public List<Message> getMessages(@RequestBody String chat) {
+        Chat ce = chatService.findByName(chat);
 
         if(ce != null) {
-            return messageDAO.findAllByChat(ce.getChat_id());
+            return messageService.findAllByChat(ce.getChat_id());
         }
         else{
-            return new ArrayList<MessageEntity>();
+            return new ArrayList<Message>();
         }
     }
 
     //finds the chat whose name is the parameter, if it doesn't exist it gets created, the ID gets returned either way
-//    private Long createAndOrGetChat(String name) {
-//        ChatEntity ce = chatDAO.findByName(name);
-//
-//        if (ce != null) {
-//            return ce.getChat_id();
-//        }
-//        else {
-//            ChatEntity newChat = new ChatEntity(name);
-//            return chatDAO.save(newChat).getChat_id();
-//        }
-//    }
+    private Long createAndOrGetChat(String name) {
+        Chat ce = chatService.findByName(name);
+
+        if (ce != null) {
+            return ce.getChat_id();
+        }
+        else {
+            Chat newChat = new Chat(name);
+            return chatService.saveChat(newChat);
+        }
+    }
 
     private String generateTimeStamp() {
         Instant i = Instant.now();
