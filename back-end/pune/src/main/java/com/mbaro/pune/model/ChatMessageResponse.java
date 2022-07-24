@@ -3,8 +3,7 @@ package com.mbaro.pune.model;
 import javax.persistence.*;
 
 @Entity
-public class ChatMessage {
-
+public class ChatMessageResponse {
 
     @Id
     @Column(name = "id")
@@ -12,10 +11,10 @@ public class ChatMessage {
     private Long id;
 
     private String content;
-    private String sender;
 
-    public enum MessageType{
-        CHAT,LEAVE,JOIN
+    public ChatMessageResponse(String content) {
+        this.content = content;
+
     }
 
     public Long getId() {
@@ -34,11 +33,11 @@ public class ChatMessage {
         this.content = content;
     }
 
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
+    @Override
+    public String toString() {
+        return "ChatMessageResponse{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

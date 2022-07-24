@@ -81,6 +81,7 @@ import { Store } from './util/Store';
     MatDialogModule
   ],
   providers: [Store],
+  providers: [TestComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
