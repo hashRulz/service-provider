@@ -1,37 +1,94 @@
 package com.mbaro.pune.controller;
 
-import com.mbaro.pune.model.ChatMessage;
-import com.mbaro.pune.model.ChatMessageResponse;
+import com.mbaro.pune.model.ChatEntity;
+import com.mbaro.pune.model.MessageEntity;
+import com.mbaro.pune.repository.ChatRepository;
+import com.mbaro.pune.repository.MessageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.HtmlUtils;
+
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class ChatController {
 
-    @MessageMapping("/register")
-    @SendTo("/topic/public")
-    public ChatMessage register(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor){
-        headerAccessor.getSessionAttributes().put("username",chatMessage.getSender());
-        return chatMessage;
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+    @Autowired
+    private ChatRepository chatDAO;
+    @Autowired
+    private MessageRepository messageDAO;
+
+    @MessageMapping("/chat/{to}") //to = nome canale
+    public void sendMessage(@DestinationVariable String to , MessageEntity message) {
+        System.out.println("handling send message: " + message + " to: " + to);
+        message.setChat_id(createAndOrGetChat(to));
+        message.setT_stamp(generateTimeStamp());
+        message = messageDAO.save(message);
+        simpMessagingTemplate.convertAndSend("/topic/messages/" + to, message);
     }
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/public")
-    public ChatMessage sendMessage(@Payload ChatMessage chatMessage){
-        return chatMessage;
+    @PostMapping("/getChats")
+    public List<ChatEntity> getChats(@RequestBody String user){
+        return chatDAO.findByPartecipant(user);
     }
 
-    @MessageMapping("/message")
-    @SendTo("/topic/messages")
-    public ChatMessageResponse getMessage(final ChatMessage chatMessage) throws InterruptedException{
-        Thread.sleep(1000);
-        return new ChatMessageResponse(HtmlUtils.htmlEscape(chatMessage.getContent()));
+    //returns an empty list if the chat doesn't exist
+    @PostMapping("/getMessages")
+    public List<MessageEntity> getMessages(@RequestBody String chat) {
+        ChatEntity ce = chatDAO.findByName(chat);
+
+        if(ce != null) {
+            return messageDAO.findAllByChat(ce.getChat_id());
+        }
+        else{
+            return new ArrayList<MessageEntity>();
+        }
+    }
+
+    //finds the chat whose name is the parameter, if it doesn't exist it gets created, the ID gets returned either way
+//    private Long createAndOrGetChat(String name) {
+//        ChatEntity ce = chatDAO.findByName(name);
+//
+//        if (ce != null) {
+//            return ce.getChat_id();
+//        }
+//        else {
+//            ChatEntity newChat = new ChatEntity(name);
+//            return chatDAO.save(newChat).getChat_id();
+//        }
+//    }
+
+    private String generateTimeStamp() {
+        Instant i = Instant.now();
+        String date = i.toString();
+        System.out.println("Source: " + i.toString());
+        int endRange = date.indexOf('T');
+        date = date.substring(0, endRange);
+        date = date.replace('-', '/');
+        System.out.println("Date extracted: " + date);
+        String time = Integer.toString(i.atZone(ZoneOffset.UTC).getHour() + 1);
+        time += ":";
+
+        int minutes = i.atZone(ZoneOffset.UTC).getMinute();
+        if (minutes > 9) {
+            time += Integer.toString(minutes);
+        } else {
+            time += "0" + Integer.toString(minutes);
+        }
+
+        System.out.println("Time extracted: " + time);
+        String timeStamp = date + "-" + time;
+        return timeStamp;
     }
 }

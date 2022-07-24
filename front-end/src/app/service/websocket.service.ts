@@ -10,7 +10,7 @@ import * as Stomp from 'stompjs';
 export class WebsocketService {
 
   webSocketEndPoint: string = 'http://localhost:8081/chat';
-    topic: string = "/topic/messages";
+    topic: string = "/topic/greetings";
     stompClient: any;
 
     appComponent: TestComponent;
