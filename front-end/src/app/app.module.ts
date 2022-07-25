@@ -28,6 +28,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BusinessComponent } from './components/business/business.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './components/chat/chat.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MessageComponent } from './components/message/message.component';
+import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
+import { PostJobComponent } from './components/post-job/post-job.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TestComponent } from './components/test/test.component';
+import { Store } from './util/Store';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -39,9 +50,19 @@ import { ChatComponent } from './components/chat/chat.component';
     HomeComponent,
     ClientComponent,
     BusinessComponent,
-    ChatComponent
+    ChatComponent,
+    FooterComponent,
+    MessageComponent,
+    BusinessProfileComponent,
+    PostJobComponent,
+    CreatePostComponent,
+    TestComponent
   ],
   imports: [
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatPaginatorModule,
     NgbModule,
     HttpClientModule,
     MatTableModule,
@@ -58,9 +79,10 @@ import { ChatComponent } from './components/chat/chat.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [Store,TestComponent,{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

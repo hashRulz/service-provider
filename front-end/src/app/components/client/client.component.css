@@ -6,6 +6,11 @@
     margin-right: 5%;
 }
 
+.container{
+    min-height: 600px;
+    padding-top: 2%;
+ }
+
 table {
     width: 100%;
     height: 100%;
@@ -20,6 +25,12 @@ margin-left: -11%;}
     width: 155px;
    }
 @media (max-width: 576px) {
+    #price{
+        font-size: 15px;
+     }
+    h1{
+        font-size: 20px;
+    }
     #dp{
         width: 75px;
     }
@@ -34,7 +45,8 @@ margin-left: -11%;}
     }
    #btn-chat{
     font-size: 12px;
-    width: 55px;
+    width: 65px;
+    height: 40px;
    }
    #icn-chat {
     font-size: 17px;

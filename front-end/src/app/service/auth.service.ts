@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { RouteConfigLoadEnd } from '@angular/router';
+import { faL } from '@fortawesome/free-solid-svg-icons';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { HomeComponent } from '../components/nav/home.component';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -8,9 +11,10 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-
+  isUserLogged = false;
   header! : HttpHeaders;
-
+  isLoginSubject = new BehaviorSubject<boolean>(false);
+  
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
   USER_NAME_SESSION_ATTRIBUTE_ID = 'authenticatedUserId'
   public username: string="";
@@ -23,24 +27,36 @@ export class AuthService {
 
   }
 
+  private hasToken() : boolean {
+    return !!localStorage.getItem('authenticatedUser');
+  }
+
   authenticationService(username: string, password: string) {
     
     const headers = new HttpHeaders({Authorization : 'Basic '+btoa(username + ":" + password)})
+    console.log(username,password)
     sessionStorage.setItem('btoa',btoa(username + ":" + password))
     return this.http.get(`${this.baseUrl}/basicauth`,{headers}).pipe(map((res) => {
      this.username = username;
      this.password = password;
      this.userService.header = headers;
      this.registerSuccessfulLogin(username , password)
-  
+     this.isLoginSubject.next(true);
+     let loggedUser = sessionStorage.getItem('authenticatedUser');
+     this.userService.getLoggedInUser(loggedUser).subscribe(data=>{
+       console.log(data)
+       sessionStorage.setItem('user',JSON.stringify(data))
+     })
    }));
   }
+
 
   createBasicAuthToken(username: string, password: string) {
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 
   registerSuccessfulLogin(username: string , password: string) {
+   
 
    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
     
@@ -51,10 +67,13 @@ export class AuthService {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     sessionStorage.removeItem('btoa')
     sessionStorage.removeItem('role')
+    sessionStorage.removeItem('user')
     this.username = "";
     this.password = "";
+    HomeComponent.prototype.updateUserLogout();
   }
 
+  
   isUserLoggedIn() {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
     
@@ -64,6 +83,7 @@ export class AuthService {
 
     }
   }
+  
   
   getLoggedInUserId(){
    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_ID)

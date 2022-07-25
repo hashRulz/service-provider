@@ -56,4 +56,25 @@ public class UserController {
         }
     }
 
+//    @GetMapping("getUser/{uname}")
+//    public ResponseEntity<User> getUserByUserName(@PathVariable("uname") String uname){
+//        try {
+//
+//            return new ResponseEntity<>(userService.findByUsername(uname),HttpStatus.OK);
+//        }catch (Exception e){
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
+    @GetMapping("getLoggedUser/{uname}")
+    public ResponseEntity<User> getLoggedUser(@PathVariable("uname") String uname){
+        try {
+            User user = userService.findByUsername(uname);
+            System.out.println(user);
+            return new ResponseEntity<>(user,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

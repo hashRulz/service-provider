@@ -1,5 +1,8 @@
 
 @media (max-width: 576px) {
+  li {
+    margin-left: 35%;
+}
   #btn-post{
     font-size: 10px;
     text-align: center;

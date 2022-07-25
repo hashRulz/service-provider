@@ -5,7 +5,6 @@ import { MatSort } from '@angular/material/sort';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
 import {ChatComponent} from "../chat/chat.component";
 import {MatDialog} from "@angular/material/dialog";
-import { ChatComponent } from '../chat/chat.component';
 
 interface Bussiness{
   id:number
@@ -26,7 +25,7 @@ export class ClientComponent implements OnInit {
   displayedColumns: string[] = ['id'];
   public dataSource = new MatTableDataSource<Bussiness>()
   description!:string;
-
+  category:string="programming"
 
   json = [{
     id:1,
@@ -35,7 +34,11 @@ export class ClientComponent implements OnInit {
     readMore:false,
     length:150
   },
-  {id:2,description :"e of implementing dynamically limit long text",length:20}]
+  {id:2,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20},
+  {id:3,description :"e of implementing dynamically limit long text",length:20}]
 
   constructor(private route:Router,
               private dialogBox: MatDialog) {
@@ -45,6 +48,11 @@ export class ClientComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.data = this.json as Bussiness[]
 
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

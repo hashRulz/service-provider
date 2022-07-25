@@ -1,0 +1,138 @@
+#td1{
+    padding: 4%;
+    max-width: 400px;
+    min-width: 200px;
+}
+
+#x {
+    position: absolute;
+    background: red;
+    color: white;
+    top: -10px;
+    right: -10px;
+}
+#containers {
+    /* width: 80%; */
+    /*border-radius: 25px;*/
+    border: 2px solid Black;
+    padding: 15px 15px 15px 15px;
+    margin: 20px 20px 20px 20px;
+    background: #ffffff;
+    overflow: visible;
+    box-shadow: 5px 5px 2px #888888;
+    position: relative;
+  }
+#descInput{
+    min-width: 700px;
+    min-height:75px;
+    font-size: 30px;
+    border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+     transition: 0.5s;
+    outline: none;
+}
+td{
+    vertical-align: middle;
+}
+#descInput:focus {
+    border: 3px solid #555;
+  }
+
+table{
+    width: 100%;
+   
+}
+
+select{
+    background-color: #ccc;
+    min-width: 300px;
+    min-height: 50px;
+}
+
+option{
+    background-color: white;
+}
+#upImg{
+    max-width: 100px;
+    margin-left: 1%;
+}
+#imageUpload{
+    padding: 2%;
+    border-radius: 25px;
+    max-width: 100%;
+    min-height: 100px;
+    border:2px dotted black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#btn-upload{
+    margin-top: 5%;
+}
+
+textarea{
+    width: 700px;
+}
+
+@media (max-width: 576px) {
+    
+    td{
+        padding-top: 2%;
+    }
+    #fileUp{
+        font-size: small;
+    }
+
+    h2{
+        font-size: small;
+    }
+    textarea{
+        max-width: 200px;
+        min-width: 200px;
+    }
+    h1{
+        font-size: smaller;
+    }
+
+    #td1{
+        /* padding: 4%; */
+        min-width: 100px;
+        max-width:250px;
+    }
+    select{
+        background-color: #ccc;
+        min-width: 100px;
+        min-height: 25px;
+    }
+
+    #btn-upload{
+        margin-top: 15%;
+    }
+
+    #imageUpload{
+        border-radius: 25px;
+        max-width: 200px;
+        min-height: 100px;
+        border:2px dotted black;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #descInput{
+        max-width: 200px;
+        min-width: 90px;
+        min-height:75px;
+        font-size: 20px;
+        border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+         transition: 0.5s;
+        outline: none;
+    }
+    .progress{
+        max-width: 200px;
+    }
+}
+
+.preview {
+    max-width: 200px;
+  }
