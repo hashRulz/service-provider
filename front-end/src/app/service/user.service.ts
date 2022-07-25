@@ -44,7 +44,13 @@ return this.httpClient.get(`${this.baseUrl}/getRoles/${name}`)
     return this.httpClient.get(`${this.baseUrl}/getUsersByUserName/${name}`)
   }
 
-  getUserByNickname(arg0: string):Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/getUser/${arg0}`)
+  // getUserByNickname(arg0: string):Observable<any> {
+  //   return this.httpClient.get(`${this.baseUrl}/getUser/${arg0}`)
+  // }
+
+  getLoggedInUser(username:any):Observable<any>{
+    return this.httpClient.get(`${this.baseUrl}/getLoggedUser/${username}`)
   }
+
+
 }

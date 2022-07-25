@@ -19,19 +19,13 @@ export class TestComponent implements OnInit {
 
   url = 'http://localhost:8081';
   otherUser?: User;
-  thisUser: User = {
-    nickname: "abc",
-    username: '',
-    id: 2,
-    firstName: "sss",
-    user_id: undefined,
-    fullName:"abc"
-  }
+  thisUser: User = JSON.parse(sessionStorage.getItem('user')!);
   channelName?: string;
   socket?: WebSocket;
   stompClient: Stomp.Client;
   newMessage = new FormControl('');
   messages?: Observable<Array<Chat>>;
+  clickedUser:string;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,16 +35,24 @@ export class TestComponent implements OnInit {
 
 
   ngOnInit(): void {
+   
+  }
+
+  checkUser(user:string){
+    this.clickedUser = user;
+    let clickedId = this.clickedUser;
+
     this.userService
-      .getUserByNickname("te1")
+      .getLoggedInUser(clickedId)
       .subscribe((data: User | undefined) => {
         console.log(data)
         this.otherUser = data;
         // this.otherUser.propic = "data:image/jpeg;base64,"+ this.otherUser.propic;
-        this.connectToChat();
+        
+      });
+    this.connectToChat();
         console.log(this.el)
         this.el.nativeElement.querySelector("#chat").scrollIntoView();
-      });
   }
 
   ngAfterViewChecked(): void {
@@ -65,7 +67,7 @@ export class TestComponent implements OnInit {
   connectToChat() {
     console.log("connectingggg")
     const id1 = this.thisUser.id!;
-    const nick1 = this.thisUser.nickname;
+    const nick1 = this.thisUser.fullName;
     const id2 = this.otherUser?.id!;
     const nick2 = this.otherUser?.fullName!;
 
@@ -98,7 +100,7 @@ export class TestComponent implements OnInit {
         '/app/chat/' + this.channelName,
         {},
         JSON.stringify({
-          sender: this.thisUser.nickname,
+          sender: this.thisUser.fullName,
           t_stamp: 'to be defined in server',
           content: this.newMessage.value,
         })

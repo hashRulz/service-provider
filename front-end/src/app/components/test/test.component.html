@@ -8,6 +8,10 @@
       <div class="card-footer"></div>
     </div>
   </div>
+  <button (click)="checkUser('te1')">te1</button>
+  <button (click)="checkUser('te2')">te2</button>
+  <button (click)="checkUser('te3')">te3</button>
+  <button (click)="checkUser('te4')">te4</button>
   <div class="col-md-8 col-xl-6 chat">
     <div class="card">
       <div class="card-header msg_head">
@@ -16,7 +20,7 @@
             <!-- <img [src]="otherUser?.propic" class="rounded-circle user_img" /> -->
           </div>
           <div class="user_info">
-            <span>Chat con {{ otherUser?.firstName }}</span>
+            <span>Chat con {{ otherUser?.fullName }}</span>
           </div>
         </div>
       </div>
@@ -25,7 +29,7 @@
         <div *ngFor="let msg of messages | async">
           <div
             class="d-flex justify-content-start mb-4"
-            *ngIf="msg.sender === otherUser!.nickname; else thisUserMsg"
+            *ngIf="msg.sender === otherUser!.fullName; else thisUserMsg"
           >
             <div class="img_cont_msg">
               <!-- <img

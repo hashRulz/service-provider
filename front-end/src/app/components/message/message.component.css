@@ -58,11 +58,14 @@ img{ max-width:100%;}
 }
 .inbox_chat { height: 550px; overflow-y: scroll;}
 
-.active_chat{ background:#ebebeb;}
+.active_chat{ background:#ebebeb;
+    cursor: pointer;    
+    
+}
 
 .incoming_msg_img {
   display: inline-block;
-  width: 6%;
+  width: 4%;
 }
 .received_msg {
   display: inline-block;
@@ -132,4 +135,53 @@ img{ max-width:100%;}
 .msg_history {
   height: 516px;
   overflow-y: auto;
+}
+
+@media (max-width: 576px) {
+  .inbox_people .closebtn {
+    position: absolute;
+    /* top: 0; */
+    right: 25px;
+    top: -10px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .inbox_people {
+    height: 100%;
+    position: sticky  ;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin-left: 1%;
+    z-index: 5;
+    /* margin: 30px; */
+    border: 0;
+  }
+
+  .mesgs {
+    /* position: absolute; */
+    float: none;
+    border: 0;
+    /* padding: 30px 15px 0 25px; */
+    width: 100%;
+    z-index: -1;
+    /* border: 0px solid #c4c4c4; */
+  }
+  .inbox_msg {
+    border: 0px solid #c4c4c4;
+    clear: both;
+    overflow: hidden;
+    padding: 0px 25px 0 2px;
+  }
+
+  .input_msg_write input{
+    width: 80%;
+  }
+
+  .msg_history{
+    width: 100%;
+  }
 }

@@ -42,6 +42,11 @@ export class AuthService {
      this.userService.header = headers;
      this.registerSuccessfulLogin(username , password)
      this.isLoginSubject.next(true);
+     let loggedUser = sessionStorage.getItem('authenticatedUser');
+     this.userService.getLoggedInUser(loggedUser).subscribe(data=>{
+       console.log(data)
+       sessionStorage.setItem('user',JSON.stringify(data))
+     })
    }));
   }
 
@@ -62,6 +67,7 @@ export class AuthService {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     sessionStorage.removeItem('btoa')
     sessionStorage.removeItem('role')
+    sessionStorage.removeItem('user')
     this.username = "";
     this.password = "";
     HomeComponent.prototype.updateUserLogout();

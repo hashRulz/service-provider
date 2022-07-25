@@ -6,6 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { faSignIn, faMoneyBill, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,8 @@ export class HomeComponent implements OnInit {
     if(sessionStorage.getItem('authenticatedUser')){
       this.userLoggedIn = this.auth.isUserLoggedIn();
     }
+
+   
  
   }
   
@@ -38,7 +41,7 @@ export class HomeComponent implements OnInit {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private route: Router,
-    public auth:AuthService) {
+    public auth:AuthService, private userService:UserService) {
       // this.isLoggedIn = auth.isLoggedIn();
     }
 
