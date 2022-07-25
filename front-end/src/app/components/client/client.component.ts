@@ -25,7 +25,7 @@ export class ClientComponent implements OnInit {
   displayedColumns: string[] = ['id'];
   public dataSource = new MatTableDataSource<Bussiness>()
   description!:string;
-
+  category:string="programming"
 
   json = [{
     id:1,
