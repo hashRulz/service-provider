@@ -160,7 +160,10 @@ img{ max-width:100%;}
     /* margin: 30px; */
     border: 0;
   }
-
+  .incoming_msg_img {
+    display: inline-block;
+    width: 7%;
+  }
   .mesgs {
     /* position: absolute; */
     float: none;
@@ -174,7 +177,7 @@ img{ max-width:100%;}
     border: 0px solid #c4c4c4;
     clear: both;
     overflow: hidden;
-    padding: 0px 25px 0 2px;
+    padding: 0px 5px 0 2px;
   }
 
   .input_msg_write input{

@@ -16,7 +16,11 @@
 
 <div class="messaging">
   
-  <span *ngIf="mobile" id="recent" style="font-size:15px;cursor:pointer" (click)="openNav()">&#9776; Recent chat</span>
+  <span *ngIf="mobile" id="recent" style="height:40px; padding:6px 0 0 0; font-size:15px;cursor:pointer;background-color: rgb(233, 233, 233);" (click)="openNav()"> 
+    <i class="fa fa-chevron-left fa-1x fa-fw" aria-hidden="true"></i>
+    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+               Madushan</span>
+
       <div class="inbox_msg">
         
         <div id="mySidenav" class="inbox_people">
@@ -34,6 +38,7 @@
             </div>
           </div>
           <div class="inbox_chat">
+           
             <div *ngFor="let chat of chats"  class="chat_list active_chat">
               <div (click)="clickedUser(chat.username)" class="chat_people">
 
@@ -49,9 +54,20 @@
           </div>
         </div>
         <div class="mesgs">
+          <div style="padding:1px 0 20px 0 ;" *ngIf="!mobile">
+            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            {{chatUser}}
+          </div>
           <div id="msg_history" class="msg_history">
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test which is a new approach to have all
+                    solutions</p>
+                  <span class="time_date"> 11:01 AM    |    June 9</span></div>
+              </div>
+            </div>
+            <div class="incoming_msg">
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Test which is a new approach to have all
@@ -66,7 +82,6 @@
                 <span class="time_date"> 11:01 AM    |    June 9</span> </div>
             </div>
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Test, which is a new approach to have</p>
@@ -79,7 +94,6 @@
                 <span class="time_date"> 11:01 AM    |    Today</span> </div>
             </div>
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>We work directly with our designers and suppliers,

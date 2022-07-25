@@ -10,6 +10,7 @@ export class MessageComponent implements OnInit {
   chats : any
   ele :any
   mobile:any
+  chatUser:string ="Madushan"
   constructor() { }
 
 
