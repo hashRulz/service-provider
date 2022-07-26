@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import {AppConstants} from "../configuration/AppConstant";
 
 class User{
 
@@ -11,13 +12,13 @@ class User{
 })
 export class UserService {
 
-  
+
 
 
   @Input('header')  header! : HttpHeaders;
- 
+
   user: User = new User();
-  private baseUrl = "http://localhost:8081/api/v1"
+  private baseUrl = AppConstants.baseURL+"/api/v1"
 
   constructor(private httpClient : HttpClient) { }
 
@@ -39,7 +40,7 @@ return this.httpClient.get(`${this.baseUrl}/getRoles/${name}`)
   }
 
   getUserNameByFullName(name:string):Observable<any>{
-    
+
 
     return this.httpClient.get(`${this.baseUrl}/getUsersByUserName/${name}`)
   }

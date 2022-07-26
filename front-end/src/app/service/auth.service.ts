@@ -5,6 +5,7 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HomeComponent } from '../components/nav/home.component';
 import { UserService } from './user.service';
+import {AppConstants} from "../configuration/AppConstant";
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,14 @@ export class AuthService {
   isUserLogged = false;
   header! : HttpHeaders;
   isLoginSubject = new BehaviorSubject<boolean>(false);
-  
+
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
   USER_NAME_SESSION_ATTRIBUTE_ID = 'authenticatedUserId'
   public username: string="";
   public password: string="";
 
- 
-  private baseUrl = "http://localhost:8081/api/v1"
+
+  private baseUrl = AppConstants.baseURL+"/api/v1"
 
   constructor(private http: HttpClient,private userService:UserService) {
 
@@ -32,7 +33,7 @@ export class AuthService {
   }
 
   authenticationService(username: string, password: string) {
-    
+
     const headers = new HttpHeaders({Authorization : 'Basic '+btoa(username + ":" + password)})
     console.log(username,password)
     sessionStorage.setItem('btoa',btoa(username + ":" + password))
@@ -56,10 +57,10 @@ export class AuthService {
   }
 
   registerSuccessfulLogin(username: string , password: string) {
-   
+
 
    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
-    
+
   }
 
   logout() {
@@ -73,23 +74,23 @@ export class AuthService {
     HomeComponent.prototype.updateUserLogout();
   }
 
-  
+
   isUserLoggedIn() {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
-    
+
     if (user === null) return false
     else{
       return true
 
     }
   }
-  
-  
+
+
   getLoggedInUserId(){
    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_ID)
    if (user === null) return ''
    return user
-   
+
   }
   getLoggedInUserName() {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
