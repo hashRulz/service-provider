@@ -26,8 +26,13 @@ public class UserController {
     UserService userService;
 
     @GetMapping(path = "/basicauth")
-    public AuthenticationBean user(Principal user) {
-        return new AuthenticationBean("You are authenticated");
+    public ResponseEntity<AuthenticationBean> user(Principal user) {
+        try {
+            return new ResponseEntity<>(new AuthenticationBean("success"),HttpStatus.OK);
+
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/user/save")
