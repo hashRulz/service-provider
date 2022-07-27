@@ -28,6 +28,7 @@ public class UserController {
     @GetMapping(path = "/basicauth")
     public ResponseEntity<AuthenticationBean> user(Principal user) {
         try {
+            System.out.println("heel");
             return new ResponseEntity<>(new AuthenticationBean("success"),HttpStatus.OK);
 
         }catch (Exception e){
@@ -38,7 +39,6 @@ public class UserController {
     @PostMapping("/user/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         try {
-            System.out.println(user);
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             user.setEnabled(true);
@@ -75,7 +75,6 @@ public class UserController {
     public ResponseEntity<User> getLoggedUser(@PathVariable("uname") String uname){
         try {
             User user = userService.findByUsername(uname);
-            System.out.println(user);
             return new ResponseEntity<>(user,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
