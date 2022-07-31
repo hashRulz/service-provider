@@ -1,1 +1,293 @@
-<p>business-profile works!</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+<!--          <h1 class="m-0 text-dark">User Master</h1>-->
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/app/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Masters</a></li>
+            <li class="breadcrumb-item active">User</li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+
+  <!-- Main content -->
+  <div class="content">
+
+    <div class="container-fluid card">
+
+      <div class="card-header">
+        <h3 class="card-title">My Profile Details</h3>
+      </div>
+      <form [formGroup]="userForm" (submit)="submit()">
+        <div style="padding-left:30px;" class="row card-body">
+
+          <div style="margin-right:40px;" class="col-md-5">
+
+            <!-- new -->
+
+
+            <!-- new -->
+
+            <div class="row">
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="txtLocationName">First Name</label><span class="red-star">*</span>
+                  <input type="text" class="form-control form-control-sm" id="first-name" placeholder="First Name"
+                         [ngClass]="{'is-invalid': checkError('fullName') ? true : false}"
+                         formControlName="fullName" required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="txtLocationName">Last Name </label><span class="red-star">*</span>
+                  <input type="text" class="form-control form-control-sm" id="last-name" placeholder="Last Name"
+                         [ngClass]="{'is-invalid': checkError('last') ? true : false}"
+                         formControlName="last" required>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="txtLocationName">Email</label><span class="red-star">*</span>
+                  <input type="text" [readonly]="isDisabled"  class="form-control form-control-sm" id="username" placeholder="Email"
+                         [ngClass]="{'is-invalid': checkError('username') ? true : false}"
+                         formControlName="username">
+                  <!-- <span *ngIf="!email.valid && (email.dirty ||email.touched)" style="color:red;">Email must be a valid email address</span> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="txtLocationName">Username</label>
+                  <input type="text"  class="form-control form-control-sm" id="username" placeholder="Username"
+                  [ngClass]="{'is-invalid': checkError('email') ? true : false}"
+                         formControlName="email">
+                </div>
+              </div>
+            </div> -->
+            <!-- new -->
+
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="txtEmail">Designantion</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                    </div>
+                    <input type="text" id="designantion" class="form-control form-control-sm" placeholder="Designantion"
+                           formControlName="designation">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="txtTelephone">Mobile number</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                    </div>
+                    <input type="text" id="mobileNo" class="form-control form-control-sm"
+                           placeholder="Mobile number"
+                           formControlName="phone">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row"  [hidden] = "isShow">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="txtEmail">Password</label><span class="red-star">*</span>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" id="password" [pattern]="unamePattern" minlength="8"  class="form-control form-control-sm" placeholder="Password"
+                           [ngClass]="{'is-invalid': checkError('password') ? true : false}"
+                           formControlName="password" (change)="onPasswordChange()">
+                    <!-- <span *ngIf="!password.valid && (password.dirty ||password.touched)" style="color:red;"> .</span> -->
+                    <span *ngIf="!password.valid && (password.dirty ||password.touched)" style="color:red;"> Password should contain special characters and Minimum Length should be 8 characters</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="txtTelephone">Retype Password</label><span class="red-star">*</span>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user-secret"></i></span>
+                    </div>
+                    <input type="password" id="reytpePassword" minlength="8" class="form-control form-control-sm"
+                           placeholder="Retype Password"
+                           [ngClass]="{'is-invalid': checkError('reytpePassword') ? true : false}"
+                           formControlName="reytpePassword" (change)="onPasswordChange()">
+                  </div>
+                  <span *ngIf="confirm_password.hasError('mismatch')" style="color:red;"> Passwords do not match.</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <button type="submit" *ngIf="!viewOnly" class="btn btn-success btn-block btn-sm mb-2"><i
+                  class="fa fa-save"></i> &nbsp;
+                  <span *ngIf="isUpdate === false; else updatelock">REGISTER</span>
+                  <ng-template #updatelock>Update</ng-template>
+                </button>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" (click)="reset()" class="btn btn-warning btn-block btn-sm mb-2"><i
+                  class="fa fa-sync"></i> &nbsp;RESET
+                </button>
+              </div>
+            </div>
+
+            <!-- new ends -->
+
+          </div>
+
+
+
+
+
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- /.container-fluid -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Users List</h3>
+            <div class="card-tools">
+              <!--<ul class="pagination pagination-sm float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+              </ul>-->
+            </div>
+            <br>
+            <form [formGroup]="searchForm" (submit)="getUsers()">
+              <div class="row">
+                <div class="col-md-3">
+                  <label style="font-size: 10px !important;">First Name</label>
+                  <input id="area-code" type="text" class="form-control form-control-sm"
+                         placeholder=" First Name " formControlName="fullName">
+                </div>
+                <div class="col-md-3">
+                  <label style="font-size: 10px !important;">Last Name</label>
+                  <input id="area-code" type="text" class="form-control form-control-sm"
+                         placeholder=" Last Name " formControlName="name">
+                </div>
+                <div class="col-md-3">
+                  <label style="font-size: 10px !important;">Mobile Number</label>
+                  <input id="area-name" type="text" class="form-control form-control-sm"
+                         placeholder=" Mobile Number " formControlName="phone">
+                </div>
+                <div class="col-md-3" style="padding-top: 25px;">
+                  <button type="button" class="btn btn-warning float-right rounded-circle"
+                          (click)="resetSearchFiltersAndSearch()"><i class="fa fa-sync"></i>
+                  </button>
+                  <button type="submit" class="btn btn-info mr-2 float-right rounded-circle"><i
+                    class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+
+            <table class="table table-striped">
+              <thead>
+              <tr>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile</th>
+                <th>Designation</th>
+                <th>view</th>
+                <th>Edit</th>
+                <th>Deactivate</th>
+
+              </tr>
+              </thead>
+              <tbody *ngFor="let el of userList">
+              <tr >
+                <td>{{el?.username}} </td>
+                <td>{{el?.username}}</td>
+                <td>{{el?.username}}</td>
+                <td>{{el?.username}}</td>
+
+                <td>
+                  <button class="btn btn-danger view-button btn-sm" (click)="edit(el,true)"><i class="fas fa-eye"></i>
+                  </button>
+                </td>
+                <td>
+                  <button class="btn btn-warning edit-button btn-sm" (click)="edit(el,false)"><i
+                    class="fas fa-edit"></i>
+                  </button>
+                </td>
+                <td>
+                  <button  class="btn btn-danger delete-button btn-sm"  *ngIf="el?.status === 'ACTIVE'"
+                           (click)="disable(el)"><i class="far fa-trash-alt"></i></button>
+                  <button class="btn btn-success active-button btn-sm"  *ngIf="el?.status === 'INACTIVE'"
+                          (click)="enable(el)"><i class="fas fa-play"></i></button>
+
+                </td>
+              </tr>
+
+
+              </tbody>
+            </table>
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+
+
+      <!-- /.row -->
+    </div>
+
+
+    <!--2nd content start-  -->
+
+
+    <!--2nd content End-  -->
+
+
+  </div>
+  <!-- /.content -->
+
+
+</div>
+<!-- /.content-wrapper -->

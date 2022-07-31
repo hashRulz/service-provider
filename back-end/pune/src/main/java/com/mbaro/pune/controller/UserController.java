@@ -81,4 +81,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("getLoggedUserByEMail/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
+        try {
+            User user = userService.getUserByEmail(email);
+            return new ResponseEntity<>(user,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

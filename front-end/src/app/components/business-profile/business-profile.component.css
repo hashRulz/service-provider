@@ -1,0 +1,83 @@
+.content {
+  margin: 10px;
+}
+
+
+.page-header {
+
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-bottom: 30px;
+
+}
+
+
+/* .form-control{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    height:30px;
+    margin-bottom:30px !important;
+
+} */
+
+.btn-add-new {
+  background-color: #D20C0C;
+  padding: 5px 20px;
+  width: 243px;
+  font-size: 14px;
+
+}
+
+
+.enable-button {
+  background-color: #bfbaba;;
+  border: none;
+  font-size: 12px;
+  padding: 5px 8px;
+}
+
+
+.option {
+  font-size: 14px;
+  color: #aaa;
+}
+
+
+.star {
+  color: #D20C0C;
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.add-button-section {
+  float: right;
+  padding-right: 80px;
+}
+
+.save-button-section {
+  float: right;
+  padding-right: 28px;
+}
+
+
+.add-new {
+  /* background-color: #D20C0C; */
+  padding: 5px 5px;
+  width: 150px;
+  font-size: 14px;
+  border: none;
+}
+
+.radio {
+
+
+}
+
+.radio-inline {
+  font-size: 12px;
+  font-weight: 400;
+  color: #aaa;
+  margin-right: 5px;
+}

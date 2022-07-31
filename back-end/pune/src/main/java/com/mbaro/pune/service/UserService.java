@@ -22,4 +22,6 @@ public interface UserService {
     int getUserCount();
 
     User findByUsername(String name);
+
+    User getUserByEmail(String email);
 }
